@@ -4,6 +4,7 @@ from flask import url_for
 import os
 import sys
 
+print("Hello World")
 
 app = Flask(__name__)
 wsgi_app = app.wsgi_app
