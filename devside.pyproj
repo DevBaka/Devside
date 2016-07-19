@@ -40,7 +40,7 @@
     <Content Include="templates\dev\Programmierung.html" />
     <Content Include="templates\dev\python\Python.html" />
     <Content Include="templates\index.html" />
-    <Content Include="templates\kali\Kali Linux.html" />
+    <Content Include="templates\kali\kali_linux.html" />
     <Content Include="templates\Start.html" />
     <Content Include="templates\start\kontakt.html" />
   </ItemGroup>
