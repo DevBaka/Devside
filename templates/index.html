@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DevBaka - Home</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	<meta charset="UTF-8">
+	<meta name="date" content="2016-06-11T04:20:00+2000">
+	<meta name="description" content="DevBaka - Software Projekte, Dokumentationen, Wissen, Musik und alles mögliche um die IT-Welt">
+
+</head>
+<body>
+<div id="wrapper" class="greenshadow">
+<header>
+	<h1> DevBaka - Home </h1>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="/"> Home </a></li>
+		<li><a href="/Programmierung"> Programmierung </a></li>
+		<li><a href="/elektro"> Elektrotechnik </a></li>
+		<li><a href="/digital"> Digitaltechnik </a></li>
+	</ul>
+</nav>
+<div id="contain">
+<section id="rechts" class="column">
+	{% block content %}
+	{% endblock %}
+</section>
+
+<aside id="links" class="column">
+	{% block nav %}
+	{% endblock %}
+</aside>
+</div>
+
+<footer>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="kontakt.html">Kontakt</a></li>
+		<li><a href="impressum.html">&copy; by DevBaka. All rights reserved.</a></li>
+	</ul>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block nav %}
+    <ul>
+        <li><a href="/Start">Start</a> </li>
+
+        <ul>
+            {% for i in navbar(seite) %}
+                <li><a href="{{ i }} "> {{ i }}</a> </li>
+            {% endfor %}
+        </ul>
+        <li><a href="/Programmierung">Programmierung</a> </li>
+    </ul>
+
+{% endblock %}
+{% block content %}
+
+<h1> Impressum </h1>
+<article>
+    <h2>Kontakt</h2>
+    <p>Email: <a href="mailto:info@iparties.dom">info@iparties.dom</a><br />
+        phone: +49 511 666666<br />
+        fax:   +49 511 666667 </p>
+     <p>Geschäftsführung: Petra Bohlen</p>
+     <p>Registergericht: Amtsgericht Hannover<br />
+        Registernummer: HRB890989 <br />
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE 123456789<br />
+        Wirtschaftsitentifikationsnummer gemäß $ 139 c Abgabenordnung: DE 123456789</p>
+</article>
+
+<article>
+    <h2> Kontaktformular </h2>
+    <form id="kontaktformular" name="kontaktformular" action="http://www.formular-chef.de/fc.cgi" method="post" class="contact">
+        <input type="hidden" name="empfaenger" value="bfe15a.masemann@mmbbs.eduplaza.de" />
+        <div>
+            <label for="absender">Ihre E-Mail-Adresse:</label>
+            <input type="text" id="absender" class="contact" name="absender" />
+        </div>
+        <div>
+            <label for="nachricht">Ihre Nachricht:</label>
+            <textarea id="nachricht" class="contact" name="nachricht" cols="20" rows="5"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Abschicken" />
+        </div>
+    </form>
+</article>
+{% endblock %}

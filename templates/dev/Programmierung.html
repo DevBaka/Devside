@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block nav %}
+    <ul>
+        <li><a href="/">Start</a> </li>
+        <ul>
+        {% for i in navbar(seite) %}
+            <li><a href="{{ i }}"> {{ i }}</a> </li>
+        {% endfor %}
+        </ul>
+        <li><a href="/Programmierung">Programmierung</a> </li>
+    </ul>
+{% endblock %}
+
+
+{% block content %}
+<h2> Welcome to the Dev Area! </h2>
+<article>
+    <p> Ich hab zwar noch voll kein plan, was hier zu finden sein wird, doch wahrscheinlich kleine code snippits, die einen gut durch den tag bringen können,kleine tools, verlinkungen, dokumentationen und/oder gar kleine Tutorials. Eventuell auch ein kleiner einstieg in Python </p>
+</article>
+{% endblock %}

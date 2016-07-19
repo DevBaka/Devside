@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block nav %}
+    <ul>
+        <li><a href="/Start">Start</a> </li>
+
+        <ul>
+{% for i in navbar(seite) %}
+            <li><a href="{{ i }} "> {{ i }}</a> </li>
+{% endfor %}
+        </ul>
+        <li><a href="/Programmierung">Programmierung</a> </li>
+    </ul>
+
+    <!-- <ul>
+        <li class="lrboxborder" id="startborder" ><a href="/">Start</a></li>
+        <li class="lrboxborder"><a href="/aboutme">Über mich</a></li>
+        <li class="lrboxborder"><a href="/todo.html">Links</a></li>
+        <li class="lrboxborder"><a href="kontakt.html">Kontakt</a></li>
+    </ul> -->
+{% endblock %}
+{% block content %}
+<h1> Wozu eine weitere Seite für Grundwissen? </h1>
+<article>
+    <p> Auf dieser Seite werde ich mit der Zeit mein Wissen vermitteln. Tipps und Tricks nennen, werde euch kleinen einstieg in Verschiedene Themen bieten, Projekte hochladen, Dokumentationen schreiben, Video Tutorials hochladen, Mixes hochladen und vieles mehr. Vorerst baue ich die Seite alleine auf. Auch für mich ist diese Seite ein Projekt zur Übung und um mein Wissen zu vertiefen. Möge es bewusste Kompetenz zur unbewussten Kompetenz übersteigen. </p>
+</article>
+<h1> Zukünftige Pläne: </h1>
+<article>
+    <ul>
+        <li>Projekte in C# und Python. (Zukünftig eventuell auch C/C++, Java und Lua)</li>
+        <li>Tipps und Grundwissen über Sicherheit </li>
+        <li> Linux/Unix Grundwissen </li>
+        <li>Grundlagen zur Elektrotechnik, Digitaltechnik und zur Programmierung </li>
+        <li>Musik oder genauer gesagt einige Mixes</li>
+        <li> Jede menge weiterer kram </li>
+    </ul>
+</article>
+
+{% endblock %}

@@ -1,0 +1,208 @@
+#wrapper
+{
+	/* wrapper halt, äußerster kasten überhaupt indem alles liegt. */
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #999;
+	width: 95%;
+	height: auto; /* 900 */
+}
+
+body
+{
+	/* Unser kompletter Inhalt. 
+	Margin-top für einen mindest abstand von Oben. Zudem bestimmen wir mehrere schriftarten, falls eine nicht installiert sein sollte. */
+	background-color: #666;
+	margin-top: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+ 
+header
+{
+	/* Unser Header, recht klein und simple gehalten. */
+	width: 100%;
+	height: 50px;
+	background-color: #0F0; 
+	text-align: center;
+}
+
+nav
+{
+	/* weite soll sich über dem gesamten body erstrecken */
+	width: 100%;
+	/* Höhe soll 50px sein */
+	height: 50px;
+	/* Alles soll großgeschrieben sein. */
+	margin-bottom: uppercase;
+	/* und alles soll ebenso fett geschrieben werden. */
+	font-weight: bold;
+	/* 1px abstand zum header */
+	padding-top: 1px;
+	/* text soll mittig gestellt werden */
+	text-align: center;
+	/* Background für alle gängigen Browser eingestellt. Nicht selbst geschrieben, sondern von einer externen Seite etwas zusammen geklickt. 
+	Link: http://www.colorzilla.com/gradient-editor/ 
+	Youtube tut: incoming*/
+	background: -moz-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 83%, rgba(56,56,56,1) 87%, rgba(149,149,149,1) 100%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0d0d', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+nav li
+{
+	margin-left: 20px;
+	display: inline;
+	list-style-type: none;
+	width: 250px;
+}
+
+
+/*nav ul li a
+{
+	height: 30px;
+	width: 200px;
+	display:inline;
+}*/
+
+section
+{
+	/* float right... damit der content auf der rechten Seite ist. Dadurch wird die aside automatisch eingerückt. */
+	float: right;
+	/* Zudem muss man beachten, die % geringer zu halten, als es mit der aside zusammen ergibt.  */
+	width: 80%;
+	background-color: yellow;
+}
+
+section article
+{
+	border-color: green;
+	border-width: 5px;
+	border-style: solid;
+}
+
+#links, #rechts
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top:20px;
+	min-height: 500px;
+	height: auto;
+}
+aside
+{
+	
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fe50b+0,2989d8+69,0fe50b+100&0.8+14,1+87 */
+	/*background: -moz-linear-gradient(top, rgba(15,229,11,0.8) 0%, rgba(20,210,53,0.8) 14%, rgba(41,137,216,0.95) 69%, rgba(26,190,97,1) 87%, rgba(15,229,11,1) 100%); /* FF3.6-15 */
+	/*background: -webkit-linear-gradient(top, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	/*background: linear-gradient(to bottom, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0fe50b', endColorstr='#0fe50b',GradientType=0 ); /* IE6-9 */
+	/* Die kästen sollen 25% der  breit einnehmen */
+/*	width: 25%;
+	height: 500px;
+	/* und der text soll links sein. */
+/*	text-align: center;
+	margin-top: 20px;
+	margin-left: 20px;
+	/*margin-right: 15px;*/
+/*	margin-bottom: 20px;
+	background-color: green;
+	/*border-left: 30px black groove;*/
+	/*background-color: black;*/
+	width: 15%;
+	/*float: left;
+	/*background-color: green;*/
+	border: 2px blue dotted;
+
+}
+
+aside ul{
+	/* wir wollen ja keine punkte vor den listen punkten haben */
+	list-style: none;
+	/*color: green;*/
+	margin-right: 50px;
+}
+
+aside a 
+{
+	/*width: 100%;
+	background-color: black;
+	/*color: green;*/
+}
+
+aside li 
+{
+	/*background-color:blue;
+	/*color: blue;
+	/*margin-top: 1%;
+	margin-bottom: 1%;
+	*/
+}
+
+/* Da ich mit dem Border etwas herumspielen wollte, dachte ich mir mal daraus die kästen zu bilden. */
+/*aside li 
+{
+	border-color: black;
+	border-top:5px #AFA560 solid;
+	
+	
+	border-width: 15px;
+	border-bottom: 5px #AFA560 solid;
+/*	border-width: 5px;
+	border-left: 20px;
+*/
+}
+/* der Rand soll ich oben und unten anders Verhalten. Dabei verweise ich auf die jeweilige id im html code */
+aside #startborder
+{
+}
+aside #endborder
+{
+	/*margin-top: 1%;*/
+	/*border-bottom: 30px  #AFA560 solid;*/
+}
+
+aside .lrboxborder{
+	
+	width: 100%;
+	/*border-color: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fe50b+0,2989d8+69,0fe50b+100&0.8+14,1+87 */
+	/*background: -moz-linear-gradient(top, rgba(15,229,11,0.8) 0%, rgba(20,210,53,0.8) 14%, rgba(41,137,216,0.95) 69%, rgba(26,190,97,1) 87%, rgba(15,229,11,1) 100%); /* FF3.6-15 */
+	/*background: -webkit-linear-gradient(top, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	/*background: linear-gradient(to bottom, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0fe50b', endColorstr='#0fe50b',GradientType=0 ); /* IE6-9 */
+	border: 20px black  solid;
+	/*
+	border-top: 20px green  solid;
+	border-left: 50px  groove;
+	border-right: 50px  groove;
+	border-bottom: 20px  groove ;
+	*/
+}
+
+footer
+{
+	width: 100%;
+	height: 50px;
+	margin-top: 10px;
+	font-weight: bold;
+	padding-top: 1px;
+	background: -moz-linear-gradient(top, rgba(15,229,11,0.8) 0%, rgba(20,210,53,0.8) 14%, rgba(41,137,216,0.95) 69%, rgba(26,190,97,1) 87%, rgba(15,229,11,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0fe50b', endColorstr='#0fe50b',GradientType=0 ); /* IE6-9 */
+}
+
+
+footer li
+{
+	list-style-type:none;
+	display: inline;
+}
+
+footer li a
+{
+	width: 200px;
+	margin-left: 20px;
+}
+
