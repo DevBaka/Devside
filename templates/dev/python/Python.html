@@ -1,25 +1,41 @@
 {% extends "index.html" %}
+
+{% block nav %}
+    <ul>
+        <li><a href="/">Start</a></li>
+        <li><a href="/Programmierung">Programmierung</a></li>
+        <ul>
+            {% for i in navbar(seite) %}
+            <li><a href="{{ i }}"> {{ i }}</a></li>
+            {% endfor %}
+        </ul>
+    </ul>
+{% endblock %}
+
 {% block content %}
-<h2> Python </h2>
+<h2> Hier kommt irgendwann mal irgendetwas zu Python hin. </h2>
 <article>
-    <p> Python. Eine Sprache von welcher ich mir anfangst immer möglichst Distanstziert habe. Ich habe die Syntax gehasst. Eine ProgrammierSprachen ohne das öffnen und schließen von funktionen mit {}?
-    Funktionen werden ohne ; am ende aufgerufen? Man muss alles einfach nur einrücken? Hmmm.... Nein, Danke. Ich fand Python schon immer creepy, doch nun Liebe ich Sie. </p>
-    <p> Es ist krass, wieviel Code einfach erspart werden kann. Ein Projekt, welches ich damals mit C# mit Winform geschrieben hatte (Bevor ich WPF gelernt habe... war auch schon älter). 
-    Jedoch kann ich mich erinnern, dass ich dort etwa 1400Zeilen Programmcode hatte und etwa 2Wochen gebraucht habe und täglich von 8-20uhr dran saß.
-    Nun habe ich ein Remake mit Python geschrieben. Dieses ist Platformunabhängig oder jedenfalls für Linux und Window verfügbar, hat mehr Funktionen und es Funktioniert besser und dies mit 300 Zeilen Code und bislang 3Tagen Arbeit.
-    Auch das UI hab ich selbst geschrieben mit PyQt5. Python ist eventuell auch garnicht sooo besonders, jedoch hat es eine riesen Community und dadurch tausende Module mit denen man seine Ziele erreichen kann.</p>
-    <p> Zur Motivation erwähne ich hiermit auch, dass die Gesamte Webseite mit Python Läuft. Kein Apache, kein PHP, einfach nur Python, Flask und ein wenig HTML und CSS und es ist genial.</p>
-</article>
-´<h2>Was findet man hier?</h2>
-<article>
-    <p>Ich weiß noch nicht, was ich alles unterbringe. Eventuell werd ich einige Grundlagen erklären. Auch wenn ich dies weniger will. Eventuell zeig ich einzelne Themen w.z.b Reguläre Ausdrücke, Module wie impacket, socket oder networking etc, mal schauen </p>
-    <p> Projekte, welche ich in Python geschrieben habe, werd ich hier auch nochmal verlinken.</p>
+    <p> Python. Kann als Objektorientierte Sprache und auch als Skriptsprache gesehen. 
+    Sie kann einfach sein, doch auch komplex. Es Liegt in Ihrer Hand, was Sie aus dem Werkzeug machen, da Sie der Künstler sind.</p> 
+    <p> Einige Hassen Sie, andere Lieben Sie. Python. Auch ich habe Python damals gehasst und eher vermieden. Doch sehe ich dies nun als Fehler.</p>
+    <p> Damals als ich mit C# angefangen hatte und mein erstes Projekt machte mit winforms... ich habe 3 Wochen daran gesessen und ~1400 Zeilen Programmcode geschrieben. 
+    Nun habe ich in Pyhon ein remake geschrieben. Plattformunabhängig, jedenfalls läuft Sie unter Linux und Windows. 300 Zeilen Programmcode, wobei ich selbst das UI mit PyQt5 selbst geschrieben hab in der selben Datei.</p>
+    <p>Anfangs viel es mir sehr schwer Python zu lernen... Ich lernte die Grundlagen indem ich Adressbücher und Zahlenraten schrieb für die Console, alles sehr trocken. Ich habe alles mögliche gelernt, doch scheiterte es daran, 
+    dass ich vergessen hatte, dass es live interpretiert wird. Und somit wunder ich mich, wieso eine Funktion nicht diffiniert sein soll, da ich diese Aufrufen wollte, bevor Sie gelesen wurde. War mir alles sehr ungewohnt und fremd kein compiler zu haben.</p>
+    <p> Inzwischen habe ich mich in Python verliebt. Lange hab ich nicht mehr so viel gelernt und es wird einfach nicht langweilig. </p>
+    <p> Python ist an sich vllt nicht soooooo besonders, doch ist die Community riesig. Somit gibt es auch tausende Module und dies ist ein riesen Punkt in Python.</p>
 </article>
 
-<h2> Zen of Python</h2>
+<h2>Was Findet man hier?</h2>
+<article>
+    <p> Eventuell gebe ich einige Tipps und Lösungen zu Problemen, welche mir viel unnötige Zeit gekostet habe. Seiten um eine for schleife oder while schleife zu lernen, gibt es jedoch genug. Auch Bücher gibt es nicht zu wenige.
+    Ob ich die Grundlagen komplett durchgehen werde, kann ich noch nicht sagen, jedoch will ich zu einigen Modulen was nennen und diese Vorstellen. </p>
+</article>
+
+<h2>a Zen of Python</h2>
 <article>
     <ul>
-        <li>Beautiful is better than ugly.  </li>
+        <li>Beautiful is better than ugly. </li>
         <li>Explicit is better than implicit. </li>
         <li>Simple is better than complex. </li>
         <li>Complex is better than complicated. </li>

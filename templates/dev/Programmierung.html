@@ -3,12 +3,12 @@
 {% block nav %}
     <ul>
         <li><a href="/">Start</a> </li>
-        <ul>
-        {% for i in navbar(seite) %}
-            <li><a href="{{ i }}"> {{ i }}</a> </li>
-        {% endfor %}
-        </ul>
         <li><a href="/Programmierung">Programmierung</a> </li>
+        <ul>
+            {% for i in navbar(seite) %}
+            <li><a href="{{ i }}"> {{ i }}</a> </li>
+            {% endfor %}
+        </ul>
     </ul>
 {% endblock %}
 

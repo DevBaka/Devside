@@ -37,8 +37,8 @@ def dev():
     return {"seite": "Programmierung", "navbar": createNavbar}
 
 @app.route("/Python")
-@templated("dev/Programmierung.html")
-def python():
+@templated("dev/python/Python.html")
+def Python():
     return {"seite": "Python", "navbar": createNavbar}
 
 @app.route("/Kali Linux")
