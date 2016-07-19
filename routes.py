@@ -9,7 +9,8 @@ def createNavbar(site):
         "index": ["about me", "kontakt"],
         "about me": ["about me", "kontakt"],
         "kontakt": ["about me", "kontakt"],
-        "Programmierung": ["Python", "C#", "C"]
+        "Programmierung": ["Python", "C#", "C"],
+        "Python": ["Python"]
     }
     return foo[site]
 
@@ -34,6 +35,11 @@ def kontakt():
 @templated("dev/Programmierung.html")
 def dev():
     return {"seite": "Programmierung", "navbar": createNavbar}
+
+@app.route("/Python")
+@templated("dev/Programmierung.html")
+def python():
+    return {"seite": "Python", "navbar": createNavbar}
 
 @app.route("/Kali Linux")
 @templated("kali/Kali Linux.html")
