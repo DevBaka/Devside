@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>DevBaka - Home</title>
@@ -18,8 +18,12 @@
 	<ul>
 		<li><a href="/"> Home </a></li>
 		<li><a href="/Programmierung"> Programmierung </a></li>
-		<li><a href="/elektro"> Elektrotechnik </a></li>
-		<li><a href="/digital"> Digitaltechnik </a></li>
+        {% if 'username' not in session %}
+        <li><a href="/login">Login</a></li>
+        {% endif %}
+        {% if 'username' in session %}
+        <li><a href="/logout">Logout</a></li>
+        {% endif %}
 	</ul>
 </nav>
 <div id="contain">

@@ -7,7 +7,7 @@ import sys
 
 app = Flask(__name__)
 wsgi_app = app.wsgi_app
-
+app.secret_key = os.urandom(24)
 from routes import *
 
 if __name__ == '__main__':

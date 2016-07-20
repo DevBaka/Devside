@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
-from flask import url_for, redirect, render_template
+from flask import Flask, url_for, redirect, render_template, request, session, flash, escape
 from init import app
 from misc.templating import templated
+
+# session['logged_in'] = None
 
 def createNavbar(site):
     foo = {
@@ -10,9 +11,17 @@ def createNavbar(site):
         "about me": ["about me", "kontakt"],
         "kontakt": ["about me", "kontakt"],
         "Programmierung": ["Python", "C#", "C"],
-        "Python": ["Python"]
+        "Python": ["Python"],
+        "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
+        "login": ["baka"]
     }
     return foo[site]
+
+def username():
+    if 'username' in session:
+        print "baka " +  escape(session['username'])
+    else:
+        return "error"
 
 
 @app.route("/")
@@ -41,10 +50,46 @@ def dev():
 def Python():
     return {"seite": "Python", "navbar": createNavbar}
 
-@app.route("/Kali Linux")
-@templated("kali/Kali Linux.html")
+@app.route("/kali_linux")
+@templated("kali/kali_linux.html")
 def kalistart():
-    return {"seite": "Kali Linux", "navbar": createNavbar}
+    return {"seite": "kali_linux", "navbar": createNavbar}
+
+@app.route("/login", methods=['GET', 'POST'])
+@templated("login.html")
+def login():
+    error = None
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('Python'))
+    return render_template('login.html', error=error)
+
+"""
+if request.method == "POST":
+    username = request.form['username']
+    passwd  = request.form['password'] <--- md5, sha2 oder gar was sicheres
+    if username in database and passwd == password from username in database:
+        session['username'] = 'username'
+
+
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'noob':
+            error = "Invalid credentials. Please try again."
+        else:
+            session['logged_in'] = True
+            flash('You wwere just logged in!')
+            error = "no error found. Also logged in"
+            # return {"seite": "Start", "navbar": createNavbar}
+            # return render_template(url_for("Start"))
+            return render_template('login.html', error=error)
+    return render_template('login.html', error=error) """
+
+@app.route("/logout")
+@templated("logout.html")
+def logout():
+    session.pop('username', None)
+    return redirect(url_for("Python"))
 
 @app.route("/dev/py2")
 def devpy():
@@ -67,4 +112,5 @@ def todo():
     </article>
     """
     return redirect("todo")
+
 

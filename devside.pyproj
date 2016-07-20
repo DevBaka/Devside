@@ -41,6 +41,7 @@
     <Content Include="templates\dev\python\Python.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\kali\kali_linux.html" />
+    <Content Include="templates\login.html" />
     <Content Include="templates\Start.html" />
     <Content Include="templates\start\kontakt.html" />
   </ItemGroup>
@@ -49,6 +50,7 @@
     <Folder Include="static" />
     <Folder Include="templates" />
     <Folder Include="templates\dev" />
+    <Folder Include="templates\dev\csharp\" />
     <Folder Include="templates\dev\python" />
     <Folder Include="templates\kali" />
     <Folder Include="templates\start" />
