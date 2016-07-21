@@ -1,18 +1,32 @@
+# -*- coding: utf-8 -*-
 import sqlite3
+import MySQLdb
 
 with sqlite3.connect("devbaka.db") as connection:
     c = connection.cursor()
-    c.execute("""CREATE TABLE users(
+    c.execute("""CREATE TABLE users
 
-    """
+    """)
 """
+
 users:
     User_ID primary key, int, not null 
     Session int
     usermail text
     passwprt text/pw/encrypted
 
-einträge:
+    MySQL:
+     CREATE TABLE users(
+    -> User_ID INT NOT NULL AUTO_INCREMENT,
+    -> Session_ID INT,
+    -> usermail VARCHAR(100) NOT NULL,
+    -> username VARCHAR(100) NOT NULL,
+    -> userpass VARCHAR(100) NOT NULL,
+    -> PRIMARY KEY ( User_ID )
+    -> );
+
+
+eintrï¿½ge:
     autor
     titel
     datum  
@@ -20,7 +34,6 @@ einträge:
 
 MySql or sqlite3
 """
-
   #  c.execute("""CREATE TABLE posts(title TEXT, description, TEXT)""")
    # c.execute('INSERT INTO posts VALUES("Good", "I\'m good")')
     #c.execute('INSERT INTO posts VALUES("Well", "I\'m well")')
