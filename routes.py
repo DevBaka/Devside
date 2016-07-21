@@ -2,8 +2,10 @@
 from flask import Flask, url_for, redirect, render_template, request, session, flash, escape
 from init import app
 from misc.templating import templated
+import sql
 
 # session['logged_in'] = None
+sessionid = 1
 
 def createNavbar(site):
     foo = {
@@ -18,8 +20,8 @@ def createNavbar(site):
     return foo[site]
 
 def username():
-    if 'username' in session:
-        print "baka " +  escape(session['username'])
+    if 'sid' in session:
+        print "baka " +  escape(session['sid'])
     else:
         return "error"
 
@@ -58,11 +60,27 @@ def kalistart():
 @app.route("/login", methods=['GET', 'POST'])
 @templated("login.html")
 def login():
+    #print "is the user bereits logged in?: " + sql.isUserLoggedIn(session['sid'])
+    global sessionid
+    sessionid = sessionid + 1
     error = None
     if request.method == 'POST':
-        session['username'] = request.form['username']
+        # session['username'] = request.form['username']
+        usermail = request.form["usermail"]
+
+        userpass = request.form["password"]
+        print usermail + " \t " + userpass
+        baka = sql.login(usermail, userpass)
+        print baka
+        if baka == None:
+            print("Login fehlgeschlagen!")
+        else:
+            sql.set_session(str(sessionid), usermail, userpass)
+            session['sid'] = sessionid
+            print("eingeloggt!")
         return redirect(url_for('Python'))
     return render_template('login.html', error=error)
+
 
 """
 if request.method == "POST":
@@ -85,9 +103,13 @@ if request.method == "POST":
             return render_template('login.html', error=error)
     return render_template('login.html', error=error) """
 
+
 @app.route("/logout")
 @templated("logout.html")
 def logout():
-    session.pop('username', None)
+    baka = escape(session['sid'])
+    print "bakabitch: " + baka
+    sql.logout(baka)
+    session.pop('sid', None)
     return redirect(url_for("Python"))
 

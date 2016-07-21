@@ -1,42 +1,56 @@
-# -*- coding: utf-8 -*-
-import sqlite3
 import MySQLdb
+from constr import Constring as con
 
-with sqlite3.connect("devbaka.db") as connection:
-    c = connection.cursor()
-    c.execute("""CREATE TABLE users
+baka = con()
+z = 0
+host = ""
+user = ""
+pwd = ""
+database = ""
+for i in baka:
+    z = z + 1
+    if z == 1:
+        host = i
+    if z == 2:
+        user = i
+    if z == 3:
+        pwd = i
+    if z == 4:
+        database = i
+def connection():
+    db = MySQLdb.connect(host, user, pwd, database)
+    cursor = db.cursor()
+    cursor.execute("SELECT VERSION()")
+    data = cursor.fetchone()
+    print "database version: %s" % data
+    db.close()
 
-    """)
-"""
+def isUserLoggedIn(session):
+    db = MySQLdb.connect(host, user, pwd, database)
+    cursor = db.cursor()
+    cursor.execute("SELECT User_ID FROM users WHERE Session='" + session + "'")
+    print cursor.fetchone()
+    db.close()
+def login(usermail, password):
+    connection()
+    db = MySQLdb.connect(host, user, pwd, database)
+    cursor = db.cursor()
+    try:
+        cursor.execute("SELECT User_ID FROM users WHERE usermail='"+ usermail + "'AND userpass='" + password + "'")
+        baka = cursor.fetchone()
+    except:
+        baka = "Login Error"
+    db.close()
+    return baka
 
-users:
-    User_ID primary key, int, not null 
-    Session int
-    usermail text
-    passwprt text/pw/encrypted
+def set_session(session, usermail, userpass):
+    db = MySQLdb.connect(host, user, pwd, database)
+    cursor = db.cursor()
+    cursor.execute("Update users SET Session_ID='" + session + "' WHERE usermail='"+ usermail + "' AND userpass='" + userpass + "'")
 
-    MySQL:
-     CREATE TABLE users(
-    -> User_ID INT NOT NULL AUTO_INCREMENT,
-    -> Session_ID INT,
-    -> usermail VARCHAR(100) NOT NULL,
-    -> username VARCHAR(100) NOT NULL,
-    -> userpass VARCHAR(100) NOT NULL,
-    -> PRIMARY KEY ( User_ID )
-    -> );
-
-
-eintr�ge:
-    autor
-    titel
-    datum  
-    text/eintrag
-
-MySql or sqlite3
-"""
-  #  c.execute("""CREATE TABLE posts(title TEXT, description, TEXT)""")
-   # c.execute('INSERT INTO posts VALUES("Good", "I\'m good")')
-    #c.execute('INSERT INTO posts VALUES("Well", "I\'m well")')
-# https://flask-login.readthedocs.io/en/latest/
-#http://www.python-kurs.eu/sql_python.php
-#https://docs.python.org/2/library/sqlite3.html
+    db.close()
+def logout(session):
+    db = MySQLdb.connect(host, user, pwd, database)
+    cursor = db.cursor()
+    cursor.execute("Update users SET Session_ID=' ' WHERE Session_ID='" + session + "'")
+    db.close()

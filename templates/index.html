@@ -18,10 +18,10 @@
 	<ul>
 		<li><a href="/"> Home </a></li>
 		<li><a href="/Programmierung"> Programmierung </a></li>
-        {% if 'username' not in session %}
+        {% if 'sid' not in session %}
         <li><a href="/login">Login</a></li>
         {% endif %}
-        {% if 'username' in session %}
+        {% if 'sid' in session %}
         <li><a href="/logout">Logout</a></li>
         {% endif %}
 	</ul>
@@ -39,7 +39,6 @@
 </div>
 
 <footer>
-	<p> hello world</p>
 	<ul>
 		<li><a href="index.html">Home</a></li>
 		<li><a href="kontakt.html">Kontakt</a></li>
