@@ -25,6 +25,9 @@
     <Compile Include="misc\templating.py" />
     <Compile Include="misc\__init__.py" />
     <Compile Include="routes.py" />
+    <Compile Include="sql.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>

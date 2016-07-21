@@ -91,26 +91,3 @@ def logout():
     session.pop('username', None)
     return redirect(url_for("Python"))
 
-@app.route("/dev/py2")
-def devpy():
-    return render_template("dev/python/py2.html")
-@app.route("/todo")
-def todo():
-    index = """
-    <h2> todo </h2>
-    <article>
-        <p> Die Aside soll wie eine TreeView sein. Alles was zu start gehört soll aufgeklappt werden.
-        Was zur Programmierung gehört soll aufgeklappt werden, sobald es angeklickt wird oder man im Header auf Programmierung klickt.
-        Darauf sollen Beispielsweise verschiedene Programmiersprachen aufgelistet werden.
-        Möglichkeiten:
-        <p>-menu/menuitems ... only html/css... contra: kann nit jeder Browser
-
-        <p>zweite möglichkeit:
-           <p> If clicked on Dev{include asidedev}...
-            <p>they have: Start, Elektrotechnik, Programming new since clicked-->Python, C#, C/C++, Lua, Pawn, Javascript, Kein Java usw...
-
-    </article>
-    """
-    return redirect("todo")
-
-
