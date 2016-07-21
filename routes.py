@@ -3,10 +3,9 @@ from flask import Flask, url_for, redirect, render_template, request, session, f
 from init import app
 from misc.templating import templated
 import sql
-
+import uuid
+import flask_login
 # session['logged_in'] = None
-sessionid = 1
-
 def createNavbar(site):
     foo = {
         "index": ["about me", "kontakt"],
@@ -61,22 +60,25 @@ def kalistart():
 @templated("login.html")
 def login():
     #print "is the user bereits logged in?: " + sql.isUserLoggedIn(session['sid'])
-    global sessionid
-    sessionid = sessionid + 1
     error = None
     if request.method == 'POST':
         # session['username'] = request.form['username']
         usermail = request.form["usermail"]
-
+        mgr = sql.SQLmgr()
         userpass = request.form["password"]
         print usermail + " \t " + userpass
-        baka = sql.login(usermail, userpass)
+        sessionid = uuid.uuid4()
+        print "the session of sessions: " + str(sessionid)
+        # baka = sql.login(usermail, userpass)
+        baka = mgr.login(usermail, userpass)
         print baka
         if baka == None:
             print("Login fehlgeschlagen!")
         else:
-            sql.set_session(str(sessionid), usermail, userpass)
             session['sid'] = sessionid
+            lolz = escape(session['sid'])
+            mgr.set_session( lolz, usermail, userpass)
+
             print("eingeloggt!")
         return redirect(url_for('Python'))
     return render_template('login.html', error=error)
@@ -108,8 +110,9 @@ if request.method == "POST":
 @templated("logout.html")
 def logout():
     baka = escape(session['sid'])
+    mgr = sql.SQLmgr()
     print "bakabitch: " + baka
-    sql.logout(baka)
+    mgr.logout(str(baka))
     session.pop('sid', None)
     return redirect(url_for("Python"))
 
