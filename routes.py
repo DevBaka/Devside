@@ -65,7 +65,7 @@ def login():
     if request.method == 'POST':
         # session['username'] = request.form['username']
         usermail = request.form["usermail"]
-        mgr = sql.SQLmgr()
+        mgr = sql
         userpass = request.form["password"]
         print usermail + " \t " + userpass
         sessionid = uuid.uuid4()
@@ -76,9 +76,9 @@ def login():
         if baka == None:
             print("Login fehlgeschlagen!")
         else:
-            session['sid'] = sessionid
-            lolz = escape(session['sid'])
-            mgr.set_session( lolz, usermail, userpass)
+            #session['sid'] = sessionid
+            #lolz = escape(session['sid'])
+            #mgr.set_session( lolz, usermail, userpass)
 
             print("eingeloggt!")
         return redirect(url_for('Python'))
@@ -87,11 +87,64 @@ def login():
 @app.route("/register", methods=['GET','POST'])
 @templated("register.html")
 def register():
-    if request.method == "POST":
-        print "trololololol1: " + sql.usernameInDB
-        print "trololololol2: " + sql.usermailInDB
-    return ""
+    error = None
+    if request.method == 'POST':
+        # session['username'] = request.form['username']
+        usermail = request.form["usermail"]
+        mgr = sql
+        userpass = request.form["password"]
+        print usermail + " \t " + userpass
+        username = request.form["username"]
+        # baka = sql.login(usermail, userpass)
+        baka = mgr.login(usermail, userpass)
+        baka1 = sql.usernameInDB(username)
+        baka2 = sql.usermailInDB(usermail)
+        print "the bakas!" + baka1 + baka2
+        print baka
+        if baka1 != "None":
+            print("Login fehlgeschlagen!")
+        if baka2 != "None":
+            print("usermail bereits in datalist")
+        else:
+            sql.register(username, usermail, userpass)
+            #session['sid'] = sessionid
+            #lolz = escape(session['sid'])
+            #mgr.set_session( lolz, usermail, userpass)
 
+            print("registriert!!")
+        return redirect(url_for('Python'))
+    return render_template('register.html', error=error)
+
+"""
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        usermail = request.form['usermail']
+        userpass = request.form['userpass']
+        userindb = str(sql.usernameInDB(username))
+        print "trololololol1: " + baka
+        
+        mailindb = str(sql.usermailInDB(usermail))
+        print "trololololol2: " + baka2
+        
+        if userindb and mailindb == None:
+            sql.register(username, usermail, userpass)
+        else:
+            if userindb != None:
+                error = "Mail wird bereits benutzt"
+            if mailindb != None:
+                error = "Username existiert bereits!"
+            else:
+                error = "Irgendeine ganz andere scheiße im register"
+        
+        #username = request.form["username"]
+      # usermail = request.form["usermail"]
+      #  userpass = request.form["userpass"]
+        #print "trololololol1: " + sql.usernameInDB(username)
+        #print "trololololol2: " + sql.usermailInDB(usermail)
+        
+    return render_template("register.html", error=error)
+"""
 
 """
 if request.method == "POST":

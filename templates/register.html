@@ -5,10 +5,14 @@
 <article>
     <div id="logindiv">
         <form action="" method="post">
+            <input type="text" placeholder="Username" name="username" value="{{ request.form.username}}" />
             <input type="text" placeholder="E-Mail" name="usermail" value="{{ request.form.usermail }}" />
             <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}" />
             <input class="btn btn-default" type="submit" value="Login" />
         </form>
+        {% if error %}
+        <p class="error"><strong>Error: </strong> {{ error }}</p>
+        {% endif %}
     </div>
 </article>
 {% endblock %}

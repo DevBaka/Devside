@@ -47,12 +47,20 @@ def usernameInDB(username):
     c.execute("SELECT username FROM users WHERE username='" + username + "'")
     baka = c.fetchone()
     db.close()
-    return baka
+    return str(baka)
 
 def usermailInDB(usermail):
     db = sqlite3.connect("devside.db")
     c = db.cursor()
-    c.execute("SELECT usermail FROM users WHERE usermail=%s", usermail)
+    c.execute("SELECT usermail FROM users WHERE usermail='" +  usermail + "'")
+    baka = c.fetchone()
+    db.close()
+    return str(baka)
+
+def register(username, usermail, userpass):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("INSERT INTO users(username, usermail, userpass) VALUES(%s, %s, %s)", (username, usermail, userpass))
     baka = c.fetchone()
     db.close()
     return baka
