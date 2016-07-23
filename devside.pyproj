@@ -28,6 +28,9 @@
     <Compile Include="sql.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="sqlrun.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +48,7 @@
     <Content Include="templates\index.html" />
     <Content Include="templates\kali\kali_linux.html" />
     <Content Include="templates\login.html" />
+    <Content Include="templates\register.html" />
     <Content Include="templates\Start.html" />
     <Content Include="templates\start\kontakt.html" />
   </ItemGroup>

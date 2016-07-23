@@ -1,12 +1,13 @@
-import MySQLdb
-import mysql
-from chirp.pyPEG import code
+#import MySQLdb
+#import mysql
+#from chirp.pyPEG import code
 
-from constr import Constring as con
+#from constr import Constring as con
 from flask import session, escape
-import _mysql
+import sqlite3
 
-baka = con()
+#baka = con()
+"""
 z = 0
 host = ""
 user = ""
@@ -22,35 +23,48 @@ for i in baka:
         pwd = i
     if z == 4:
         database = i
-
-def login(usermail, password):
-    SQLmgr.login2(usermail, password)
-
-def set_session(session, usermail, userpass):
-    SQLmgr.set_session2(session, usermail, userpass)
 """
+
+
 def isUserLoggedIn(session):
-    db = MySQLdb.connect(host, user, pwd, database)
+    db = sqlite3.connect("devside.db")
     cursor = db.cursor()
     cursor.execute("SELECT username FROM users WHERE Session_ID='" + str(session) + "'")
     print cursor.fetchone()
     db.close()
 def login( usermail, password):
-    db = MySQLdb.connect(host, user, pwd, database)
-    cursor = db.cursor()
-    cursor.execute("SELECT User_ID FROM users WHERE usermail='"+ usermail + "' AND userpass='" + password + "'")
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT User_ID FROM users WHERE usermail='"+ usermail + "' AND userpass='" + password + "'")
     # cursor.execute("UPDATE users SET Session_ID='" + session + "' WHERE usermail='" + usermail + "' AND userpass='" + userpass + "'")
-    baka = cursor.fetchone()
+    baka = c.fetchone()
     db.close()
     return baka
 
+def usernameInDB(username):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT username FROM users WHERE username='" + username + "'")
+    baka = c.fetchone()
+    db.close()
+    return baka
+
+def usermailInDB(usermail):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT usermail FROM users WHERE usermail=%s", usermail)
+    baka = c.fetchone()
+    db.close()
+    return baka
+
+
 def set_session(session, usermail, userpass):
-    db = MySQLdb.connect(host, user, pwd, database)
-    cursor = db.cursor()
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
     print "benis" + session
     #print session + "\t" + usermail + "\t" + userpass
     #lol = escape(session['sid'])
-    cursor.execute("UPDATE users SET Session_ID='" + session+ "' WHERE usermail='"+ usermail + "' AND userpass='" + userpass + "'")
+    c.execute("UPDATE users SET Session_ID='" + session+ "' WHERE usermail='"+ usermail + "' AND userpass='" + userpass + "'")
     #cursor.execute("SET SQL_SAFE_UPDATES = 0")
     #cursor.execute("UPDATE users SET Session_ID=%s WHERE usermail=%s AND userpass=%s", (session,usermail,userpass))
     db.close()
@@ -61,7 +75,7 @@ def logout(session):
     cursor.execute("UPDATE users SET Session_ID='' WHERE Session_ID='" + session  + "'")
     db.close()
 
-"""
+
 
 class SQLif(object):
     def __init__(self, host, user, passw, database):

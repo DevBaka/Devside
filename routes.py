@@ -4,7 +4,8 @@ from init import app
 from misc.templating import templated
 import sql
 import uuid
-import flask_login
+import sqlite3
+#import flask_login
 # session['logged_in'] = None
 def createNavbar(site):
     foo = {
@@ -82,6 +83,14 @@ def login():
             print("eingeloggt!")
         return redirect(url_for('Python'))
     return render_template('login.html', error=error)
+
+@app.route("/register", methods=['GET','POST'])
+@templated("register.html")
+def register():
+    if request.method == "POST":
+        print "trololololol1: " + sql.usernameInDB
+        print "trololololol2: " + sql.usermailInDB
+    return ""
 
 
 """

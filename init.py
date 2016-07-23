@@ -4,15 +4,15 @@ from flask import url_for
 import os
 import sys
 # import flask.ext.login as flask_login
-import flask_login
+#import flask_login
 
 
 
 
 app = Flask(__name__)
 wsgi_app = app.wsgi_app
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
+#login_manager = flask_login.LoginManager()
+#login_manager.init_app(app)
 app.secret_key = os.urandom(24)
 from routes import *
 
