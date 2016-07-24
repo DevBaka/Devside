@@ -58,11 +58,16 @@ def usermailInDB(usermail):
     return str(baka)
 
 def register(username, usermail, userpass):
-    db = sqlite3.connect("devside.db")
-    c = db.cursor()
-    c.execute("INSERT INTO users(username, usermail, userpass) VALUES(%s, %s, %s)", (username, usermail, userpass))
-    baka = c.fetchone()
-    db.close()
+    print "the user register of the user!!!!: " + username + usermail + userpass
+    try:
+        db = sqlite3.connect("devside.db")
+        c = db.cursor()
+        c.execute("INSERT INTO users(usermail, username, userpass) VALUES('" + str(usermail) + "','" + str(username)  + "','" + str(userpass) + "')")
+        baka = "register geklappt!"
+        db.commit()
+        db.close()
+    except:
+        baka = "register error"
     return baka
 
 

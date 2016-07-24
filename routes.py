@@ -106,11 +106,11 @@ def register():
         if baka2 != "None":
             print("usermail bereits in datalist")
         else:
-            sql.register(username, usermail, userpass)
+            baka4 = sql.register(username, usermail, userpass)
             #session['sid'] = sessionid
             #lolz = escape(session['sid'])
             #mgr.set_session( lolz, usermail, userpass)
-
+            print "baka4: " + baka4
             print("registriert!!")
         return redirect(url_for('Python'))
     return render_template('register.html', error=error)
