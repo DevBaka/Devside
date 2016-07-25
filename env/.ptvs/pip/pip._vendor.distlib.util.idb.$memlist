@@ -91,7 +91,6 @@ convert_path
 configparser
 NAME_VERSION_RE
 HTTPSHandler
-socket_timeout
 codecs
 json
 EXTRA_LIST

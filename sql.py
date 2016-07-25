@@ -5,6 +5,7 @@
 #from constr import Constring as con
 from flask import session, escape
 import sqlite3
+from passlib.hash import pbkdf2_sha256
 
 #baka = con()
 """
@@ -32,7 +33,27 @@ def isUserLoggedIn(session):
     cursor.execute("SELECT username FROM users WHERE Session_ID='" + str(session) + "'")
     print cursor.fetchone()
     db.close()
+
+def userpwd(usermail):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT userpass From users WHERE usermail='"+usermail+"'")
+    string = c.fetchone()
+    db.close()
+    print("basdaskdlakldka kdlsa kdlsakdla !!!!! -----> " + str(string))
+    return string 
+
+def grepUsernameByMail(usermail):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT username FROM users WHERE usermail='" + usermail + "'")
+    username = c.fetchone()
+    db.close()
+    return username
+
 def login( usermail, password):
+    #epwd = userpwd(usermail)
+    #ppwd = pbkdf2_sha256.verify(epwd, hash)
     db = sqlite3.connect("devside.db")
     c = db.cursor()
     c.execute("SELECT User_ID FROM users WHERE usermail='"+ usermail + "' AND userpass='" + password + "'")
@@ -62,9 +83,10 @@ def register(username, usermail, userpass):
     try:
         db = sqlite3.connect("devside.db")
         c = db.cursor()
-        c.execute("INSERT INTO users(usermail, username, userpass) VALUES('" + str(usermail) + "','" + str(username)  + "','" + str(userpass) + "')")
+        #c.execute("INSERT INTO users(usermail, username, userpass) VALUES('" + str(usermail) + "','" + str(username)  + "','" + str(userpass) + "')")
+        c.execute("INSERT INTO users(usermail, username, userpass) VALUES('"+usermail+"','"+username + "','"+userpass +"')")
         baka = "register geklappt!"
-        db.commit()
+       # db.commit()
         db.close()
     except:
         baka = "register error"

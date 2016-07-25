@@ -34,6 +34,7 @@
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="devside.db" />
     <Content Include="static\2.css" />
     <Content Include="static\background.gif" />
     <Content Include="static\background2.gif" />

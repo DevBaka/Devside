@@ -4,7 +4,10 @@ from init import app
 from misc.templating import templated
 import sql
 import uuid
+import passlib
 import sqlite3
+import bcrypt
+from passlib.hash import pbkdf2_sha256
 #import flask_login
 # session['logged_in'] = None
 def createNavbar(site):
@@ -64,25 +67,43 @@ def login():
     error = None
     if request.method == 'POST':
         # session['username'] = request.form['username']
-        usermail = request.form["usermail"]
+        usermail = str(request.form["usermail"])
         mgr = sql
         userpass = request.form["password"]
-        print usermail + " \t " + userpass
-        sessionid = uuid.uuid4()
-        print "the session of sessions: " + str(sessionid)
-        # baka = sql.login(usermail, userpass)
-        baka = mgr.login(usermail, userpass)
-        print baka
-        if baka == None:
-            print("Login fehlgeschlagen!")
-        else:
-            #session['sid'] = sessionid
-            #lolz = escape(session['sid'])
-            #mgr.set_session( lolz, usermail, userpass)
-
-            print("eingeloggt!")
-        return redirect(url_for('Python'))
-    return render_template('login.html', error=error)
+        try:
+            etpwd = sql.userpwd(usermail)
+            epwd = etpwd[0]
+           #userpass = pbkdf2_sha256.encrypt(request.form["password"], rounds=200000, salt_size=16)
+            login_mail = str(sql.usermailInDB(usermail))
+            print epwd
+            upwd = bcrypt.hashpw(userpass.encode('utf-8'), epwd.encode('utf-8'))
+            print upwd
+            print userpass
+            if str(epwd) == str(upwd):
+                try:
+                    baka = mgr.login(usermail, str(upwd))
+                    istrue = baka[0]
+                    print istrue
+                    if istrue != 1:
+                        #if bcrypt.hashpw(userpass.encode('utf-8'), log
+                        print("Login fehlgeschlagen!")
+                    else:
+                        #session['sid'] = sessionid
+                        #lolz = escape(session['sid'])
+                        #mgr.set_session( lolz, usermail, userpass)
+                        username = sql.grepUsernameByMail(usermail)
+                        session['username'] = username[0]
+                        print("eingeloggt!")
+                        return redirect(url_for('Python'))
+                except:
+                    error="datenbank error"
+            else:
+                error = "Password Falsch"
+        except:
+            error = "Email existiert nicht. "
+            
+            
+        return render_template('login.html', error=error)
 
 @app.route("/register", methods=['GET','POST'])
 @templated("register.html")
@@ -92,7 +113,9 @@ def register():
         # session['username'] = request.form['username']
         usermail = request.form["usermail"]
         mgr = sql
-        userpass = request.form["password"]
+        #userpass = pbkdf2_sha256.encrypt(request.form["password"], rounds=200000, salt_size=16)
+        userpass = bcrypt.hashpw(request.form["password"], bcrypt.gensalt())
+        #userpass = request.form["password"]
         print usermail + " \t " + userpass
         username = request.form["username"]
         # baka = sql.login(usermail, userpass)
@@ -107,6 +130,7 @@ def register():
             print("usermail bereits in datalist")
         else:
             baka4 = sql.register(username, usermail, userpass)
+            session['username'] = username
             #session['sid'] = sessionid
             #lolz = escape(session['sid'])
             #mgr.set_session( lolz, usermail, userpass)
@@ -171,10 +195,10 @@ if request.method == "POST":
 @app.route("/logout")
 @templated("logout.html")
 def logout():
-    baka = escape(session['sid'])
-    mgr = sql.SQLmgr()
-    print "bakabitch: " + baka
-    mgr.logout(str(baka))
-    session.pop('sid', None)
+    #baka = escape(session['username'])
+    #mgr = sql.SQLmgr()
+    #print "bakabitch: " + baka
+    #mgr.logout(str(baka))
+    session.pop('username', None)
     return redirect(url_for("Python"))
 

@@ -3,10 +3,8 @@ os
 tempdir
 tempfile
 save_user_site_setting
-environment
 shutil
 quiet
 StringIO
 contextlib
 sys
-suppress_exceptions
