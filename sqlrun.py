@@ -4,6 +4,13 @@ import bcrypt
 eingabe =""
 while eingabe != "exit":
     eingabe = raw_input("eingabe: ")
+    if eingabe == "4":
+        db = sqlite3.connect("devside.db")
+        c = db.cursor()
+        c.execute("SELECT * FROM users WHERE usermail='baka@devbaka.de'")
+        print c.fetchone()
+        db.close()
+
     if eingabe == "1":
 
         baka1 = "lol"
@@ -42,8 +49,9 @@ while eingabe != "exit":
     if eingabe == "3":
         db = sqlite3.connect("devside.db")
         c = db.cursor()
-        c.execute("SELECT * FROM entries")
+        print c.execute("SELECT * FROM entries")
         c.execute("SELECT * FROM entries WHERE entrie_ID=0")
         baka= c.fetchall
+        db.commit()
         print baka
         db.close()

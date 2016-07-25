@@ -10,36 +10,36 @@
     </ul>
     <li><a href="/Programmierung">Programmierung</a> </li>
     <li><a href="/kali_linux">Kali Linux</a></li>
-   
+    
 </ul>
 {% endblock %}
 
 
 {% block content %}
-<h2> Add News </h2>
-<article>
-    <form action="" method="post">
-        <table border="0">
-            <tr>
-                <td>Datum:</td>
-                <td><input type="text" name="datum" placeholder="Datum" required</td>
-            </tr>
-            <tr>
-                <td>Titel:</td>
-                <td><input type="text" name="titel" placeholder="Titel" required</td>
-            </tr>
-            <tr>
-                <td>News:</td>
-                <td><textarea name="news" cols="80" rows="20"></textarea></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Eintragen" name="eintragen" /></td>
-            </tr>
-        </table>
-    </form>
-    {% if error %}
-    <p class="error"><strong>Error: </strong> {{ error }}</p>
+<h1> News</h1>
+<h2>  </h2>
+
+    {% if baka %}
+    {% for value in baka.values() %}
+    <p> {{ value[2] }}</p>
+    <article>
+            <p> {{ value[3] }}</p>
+            <p id="autor"> Geschrieben von {{ value[0]}} am {{ value[1]}}</p>
+    </article>
+    {% endfor %}
     {% endif %}
-</article>
+
 {% endblock %}
+
+"""
+    
+    for i in eintragdb:
+        i.titel
+        autor
+        eintragid if user == admin
+        datum
+    h2 titel h2 
+    article 
+    datum, autor
+    text
+"""

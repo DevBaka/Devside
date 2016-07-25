@@ -105,6 +105,14 @@ def write_globalNews(autor, datum, titel, news):
     db.commit()
     db.close()
 
+def red_news(entrie_ID):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("SELECT * FROM entries WHERE entrie_ID='"+ str(entrie_ID) +"'")
+    baka = c.fetchone()
+    db.close()
+    return baka
+
 
 class SQLif(object):
     def __init__(self, host, user, passw, database):

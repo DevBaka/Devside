@@ -12,15 +12,16 @@ from passlib.hash import pbkdf2_sha256
 # session['logged_in'] = None
 def createNavbar(site):
     foo = {
-        "index": ["about me", "kontakt", "profile"],
-        "about me": ["about me", "kontakt"],
-        "kontakt": ["about me", "kontakt"],
+        "index": ["about me", "kontakt", "news"],
+        "about me": ["about me", "kontakt", "news"],
+        "kontakt": ["about me", "kontakt", "news"],
         "Programmierung": ["Python", "C#", "C"],
         "Python": ["Python"],
         "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
         "login": ["baka"],
-        "profile": ["about me", "kontakt", "profile", "news"],
-        "news": ["about me", "kontakt", "profile", "news"]
+        "profile": ["about me", "kontakt", "profile", "newswriter"],
+        "newswriter": ["news","about me", "kontakt", "profile", "newswriter"],
+        "news": ["about me", "kontakt", "news", "profile", "newswriter"]
     }
     return foo[site]
 
@@ -148,8 +149,8 @@ def profile():
     print("trol jf USERNAME:    !!!! ::::: " + baka )
     return {"seite": "profile", "navbar": createNavbar}
 
-@app.route("/news", methods=['GET','POST'])
-@templated("news.html")
+@app.route("/newswriter", methods=['GET','POST'])
+@templated("newswriter.html")
 def write_news():
     error = None
     if request.method == 'POST':
@@ -160,7 +161,30 @@ def write_news():
         sql.write_globalNews(autor, datum, titel, entrie)
 
             
-    return {"seite": "news", "navbar": createNavbar, "error":error}
+    return {"seite": "newswriter", "navbar": createNavbar, "error":error}
+@app.route("/news")
+@templated("news.html")
+def news():
+    print("hello world")
+    error = None
+    i = 0
+    baka = {}
+    istrue = ""
+    autor = ""
+    titel = ""
+    
+    while istrue != None:
+        i = i + 1
+        #print baka
+        istrue = sql.red_news(i)
+        tulp = sql.red_news(i)
+        print "THE UTLLD D TULPPPEEEEEE!!!: " + str(tulp)
+        if tulp != None:
+            akdir = {i: [ tulp[1], tulp[2], tulp[3], tulp[4]]}
+            baka.update(akdir)
+
+        # lolz = lolz  + str(baka) + "\t\t\t\t\t\t\t"
+    return {"seite": "news", "navbar": createNavbar, "baka":baka}
 
 """
     error = None
