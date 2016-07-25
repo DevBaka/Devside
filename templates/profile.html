@@ -1,0 +1,25 @@
+﻿{% extends "index.html" %}
+
+{% block nav %}
+<ul>
+    <li><a href="/">Start</a> </li>
+    <ul>
+        {% for i in navbar(seite) %}
+        <li><a href="{{ i }}"> {{ i }}</a> </li>
+        {% endfor %}
+    </ul>
+    <li><a href="/Programmierung">Programmierung</a> </li>
+    <li><a href="/kali_linux">Kali Linux</a></li>
+    
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h2> Welcome back, {{ session['username'] }} !</h2>
+<article>
+    <p>
+        hier kommt irgendwann ein benutzer profiel hin
+    </p>
+</article>
+{% endblock %}

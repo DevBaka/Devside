@@ -27,12 +27,6 @@ for i in baka:
 """
 
 
-def isUserLoggedIn(session):
-    db = sqlite3.connect("devside.db")
-    cursor = db.cursor()
-    cursor.execute("SELECT username FROM users WHERE Session_ID='" + str(session) + "'")
-    print cursor.fetchone()
-    db.close()
 
 def userpwd(usermail):
     db = sqlite3.connect("devside.db")
@@ -103,13 +97,13 @@ def set_session(session, usermail, userpass):
     #cursor.execute("SET SQL_SAFE_UPDATES = 0")
     #cursor.execute("UPDATE users SET Session_ID=%s WHERE usermail=%s AND userpass=%s", (session,usermail,userpass))
     db.close()
-def logout(session):
-    db = MySQLdb.connect(host, user, pwd, database)
-    cursor = db.cursor()
-    print session
-    cursor.execute("UPDATE users SET Session_ID='' WHERE Session_ID='" + session  + "'")
-    db.close()
 
+def write_globalNews(autor, datum, titel, news):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("INSERT INTO entries(autor, datum, titel, news) VALUES('" + autor + "','" + datum + "','"+titel+"','"+news+"')")
+    db.commit()
+    db.close()
 
 
 class SQLif(object):

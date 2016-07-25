@@ -23,7 +23,7 @@
         <li><a href="/register">Registrieren</a></li>
         {% endif %}
         {% if 'username' in session %}
-        <li><a href="/ {{ session['username'] }}">{{ session['username'] }}</a></li>
+        <li><a href="/profile ">{{ session['username'] }}</a></li>
         <li><a href="/logout">Logout</a></li>
         {% endif %}
         

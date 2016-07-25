@@ -49,6 +49,8 @@
     <Content Include="templates\index.html" />
     <Content Include="templates\kali\kali_linux.html" />
     <Content Include="templates\login.html" />
+    <Content Include="templates\news.html" />
+    <Content Include="templates\profile.html" />
     <Content Include="templates\register.html" />
     <Content Include="templates\Start.html" />
     <Content Include="templates\start\kontakt.html" />

@@ -12,13 +12,15 @@ from passlib.hash import pbkdf2_sha256
 # session['logged_in'] = None
 def createNavbar(site):
     foo = {
-        "index": ["about me", "kontakt"],
+        "index": ["about me", "kontakt", "profile"],
         "about me": ["about me", "kontakt"],
         "kontakt": ["about me", "kontakt"],
         "Programmierung": ["Python", "C#", "C"],
         "Python": ["Python"],
         "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
-        "login": ["baka"]
+        "login": ["baka"],
+        "profile": ["about me", "kontakt", "profile", "news"],
+        "news": ["about me", "kontakt", "profile", "news"]
     }
     return foo[site]
 
@@ -94,7 +96,7 @@ def login():
                         username = sql.grepUsernameByMail(usermail)
                         session['username'] = username[0]
                         print("eingeloggt!")
-                        return redirect(url_for('Python'))
+                        return redirect(url_for('profile'))
                 except:
                     error="datenbank error"
             else:
@@ -136,8 +138,29 @@ def register():
             #mgr.set_session( lolz, usermail, userpass)
             print "baka4: " + baka4
             print("registriert!!")
-        return redirect(url_for('Python'))
+        return redirect(url_for('profile'))
     return render_template('register.html', error=error)
+
+@app.route("/profile")
+@templated("profile.html")
+def profile():
+    baka = escape(session['username'])
+    print("trol jf USERNAME:    !!!! ::::: " + baka )
+    return {"seite": "profile", "navbar": createNavbar}
+
+@app.route("/news", methods=['GET','POST'])
+@templated("news.html")
+def write_news():
+    error = None
+    if request.method == 'POST':
+        autor = session['username']
+        titel = request.form['titel']
+        datum = request.form['datum']
+        entrie = request.form['news']
+        sql.write_globalNews(autor, datum, titel, entrie)
+
+            
+    return {"seite": "news", "navbar": createNavbar, "error":error}
 
 """
     error = None

@@ -39,3 +39,11 @@ while eingabe != "exit":
         news TEXT);""")
         db.commit()
         db.close()
+    if eingabe == "3":
+        db = sqlite3.connect("devside.db")
+        c = db.cursor()
+        c.execute("SELECT * FROM entries")
+        c.execute("SELECT * FROM entries WHERE entrie_ID=0")
+        baka= c.fetchall
+        print baka
+        db.close()
