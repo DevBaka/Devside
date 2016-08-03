@@ -1,0 +1,38 @@
+﻿{% extends "index.html" %}
+
+{% block nav %}
+<ul>
+    <li><a href="/">Start</a> </li>
+    <ul>
+        {% for i in navbar(seite) %}
+        <li><a href="{{ i }}"> {{ i }}</a> </li>
+        {% endfor %}
+    </ul>
+    <li><a href="/Programmierung">Programmierung</a> </li>
+    <li><a href="/kali_linux">Kali Linux</a></li>
+
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h1> Welcome back, {{ session['username'] }} !</h1>
+{% if session['username'] == 'baka' %}
+<h2> File Uploader</h2>
+<article>
+    <p>
+        hier kommt irgendwann ein benutzer profiel hin
+    </p>
+</article>
+
+{% endif %}
+{% endblock %}
+
+
+<title>Upload new File</title>
+<h1>Upload new File</h1>
+<form action="" method=post enctype=multipart/form-data>
+    <p>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+</form>

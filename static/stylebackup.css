@@ -3,7 +3,7 @@
         margin-left: auto;
         margin-right: auto;
         background-color: #999;
-        width: 1500px; /* 95% , 960px*/
+        width: 960px; /* 95% , 960px*/
         height: auto;
         border-radius: 30px 30px 30px 30px;
     }
@@ -14,7 +14,7 @@
 
     body {
         background-color: #666;
-        margin-top: 50px;
+        margin-top: 1px;
         font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -53,27 +53,27 @@
             nav ul li a {
                 color: #FFF;
                 height: 30px;
-                /* Es ollen BlÃ¶cke sein. Die schrift geht etwas auseinander und irgendwie blockhaft. */
+                /* Es ollen Blöcke sein. Die schrift geht etwas auseinander und irgendwie blockhaft. */
                 display: block;
                 /* Damit steht schonmal alles nebeneinander. */
                 float: left;
                 /* Damit alles mit etwas abstand versehen wird */
-                margin-left: 200px;
+                margin-left: 75px;
                 /* Wir wollen eventuell, ja keinen unterstrich haben */
                 text-decoration: none;
             }
 
     section {
-        /* Etwas ordnung wird mit ein paar kleinen AbstÃ¤nden geschaffen */
+        /* Etwas ordnung wird mit ein paar kleinen Abständen geschaffen */
         margin-left: 10px;
         margin-right: 25px;
-        /* Die weite darf mit der Aside zusammen und den abstÃ¤ndne von links und rechts nicht die 100% Ã¼berschreiten.
+        /* Die weite darf mit der Aside zusammen und den abständne von links und rechts nicht die 100% überschreiten.
         Andernfalls Landet der Content unter der Aside */
-        width: 1140px;
-        /* Da die hÃ¶he gleich wie die Aside sein soll, wird diese oben unter #links und #rechts angegeben.
-        Eigentlich hÃ¤tt ich mir die Zeile ebenso Sparen kÃ¶nnen . */
+        width: 700px;
+        /* Da die höhe gleich wie die Aside sein soll, wird diese oben unter #links und #rechts angegeben.
+        Eigentlich hätt ich mir die Zeile ebenso Sparen können . */
         height:;
-        /* Float right ist wichtig, damit sich der content neben der aside einfÃ¤ngt und auch nicht darunter. */
+        /* Float right ist wichtig, damit sich der content neben der aside einfängt und auch nicht darunter. */
         float: right;
     }
 
@@ -90,14 +90,15 @@
 
     aside {
         margin-left: 25px;
-        width: 300px;
+        width: 200px;
         height:;
         float: left;
+        background-color: #E9E9E9;
     }
 
         aside ul li {
             list-style-type: none;
-            /* fÃ¼r einen kleinen abstand, zwischen den list punkten */
+            /* für einen kleinen abstand, zwischen den list punkten */
             margin-top: 1%;
         }
 
@@ -106,7 +107,7 @@
                 color: #000;
             }
 
-        /* ul + ul fÃ¼r die innere liste*/
+        /* ul + ul für die innere liste*/
         aside ul ul {
             margin-left: -30px;
         }
@@ -123,7 +124,7 @@
 
     #contain {
         margin-top: 25px;
-        background-image: url(background1500.png);
+        background-image: url(background.gif);
         width: 100%;
         min-height: 100%;
     }
@@ -182,7 +183,7 @@
     #kontaktformular {
         margin-left: 10px;
         background-color: #eee;
-        height: 520px;
+        height: 420px;
         padding: 20px;
     }
 
@@ -199,77 +200,9 @@
 
     #nachricht {
         height: 320px;
-        
     }
 }
-@media screen and (max-width: 1000px){
-    #wrapper {
-        margin-left: auto;
-        margin-right: auto;
-        background-color: #999;
-        width: 680px; /* 95% , 960px*/
-        height: auto;
-        border-radius: 30px 30px 30px 30px;
-    }
-
-    nav ul li a{
-        margin-left: 30px;
-    }
-
-    #contain {
-        margin-top: 25px;
-        background-image: url(background680.png);
-        width: 100%;
-        min-height: 100%;
-    }
-    section{
-        width: 420px;
-    }
-    aside{
-        width: 200px;
-    }
-
-
-    h1,h2{
-        color: red;
-    }
-}
-
-@media screen and (max-width: 700px){
-     #wrapper {
-        margin-left: auto;
-        margin-right: auto;
-        background-color: #999;
-        width: 480px; /* 95% , 960px*/
-        height: auto;
-        border-radius: 30px 30px 30px 30px;
-    }
-
-     nav ul li a{
-         margin-left: 10px;
-     }
-     section{
-         background-color: #E9E9E9;
-         float: left;
-         width: 90%;
-         margin-right: 25px;
-     }
-     aside{
-         background-color: #E9E9E9;
-         float: left;
-         width: 90%;
-         margin-top: 25px;
-         
-     }
-
-     #contain{
-         background-image: none;
-     }
-    
-}
-
-/* abstÃ¤nde: 25 + 10 + 25 = 60*/
-@media screen and ( max-width: 1500px ) and (min-width: 1000px){
+@media screen and ( max-width: 1200px ){
     #wrapper {
         margin-left: auto;
         margin-right: auto;
@@ -277,31 +210,5 @@
         width: 960px; /* 95% , 960px*/
         height: auto;
         border-radius: 30px 30px 30px 30px;
-    }
-    h1{
-        color: aquamarine;
-    }
-    
-    nav ul li a{
-        margin-left: 100px;
-    }
-
-    #contain {
-        margin-top: 25px;
-        background-image: url(background.gif);
-        width: 100%;
-        min-height: 100%;
-        background-color: #E9E9E9;
-    }
-
-    section{
-        width: 700px;
-        
-        
-    }
-    aside{
-        width: 200px;
-
-        
     }
 }

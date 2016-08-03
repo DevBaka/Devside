@@ -1,16 +1,7 @@
 {% extends "index.html" %}
 
 {% block nav %}
-    <ul>
-        <li><a href="/">Start</a></li>
-        <li><a href="/Programmierung">Programmierung</a></li>
-        <ul>
-            {% for i in navbar(seite) %}
-            <li><a href="{{ i }}"> {{ i }}</a></li>
-            {% endfor %}
-        </ul>
-        <li><a href="/kali_linux">Kali Linux</a></li>
-    </ul>
+{% include "asides/devside.html" %}
 {% endblock %}
 
 {% block content %}

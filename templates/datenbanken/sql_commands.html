@@ -1,0 +1,50 @@
+﻿{% extends "index.html" %}
+
+{% block nav %}
+{% include "asides/databaseside.html" %}
+{% endblock %}
+
+{% block content %}
+<h2> SQL Befehle</h2>
+<article>
+    <table>
+        <tr>
+            <th>Befehl</th>
+            <th>Bedeutung</th>
+        </tr>
+        <tr>
+            <td>SHOW DATABASE;</td>
+            <td>Alle Datenbanken Anzeigen</td>
+        </tr>
+        <tr>
+            <td>CREATE DATABASE databasename</td>
+            <td>Datenbank erstellen</td>
+        </tr>
+        <tr>
+            <td>DROP DATABASE;</td>
+            <td>Datenbank löschen</td>
+        </tr>
+        <tr>
+            <td>use databasename</td>
+            <td>Datenbank benutzen</td>
+        </tr>
+        <tr>
+            <td>SHOW tables</td>
+            <td>Datenbanktabellen Anzeigen</td>
+        </tr>
+        <tr>
+            <td>CREATE TABLE tablename(varname VARTYPE NOT NULL AUTO_INCREMENT PRIMARY KEY)</td>
+            <td>Datenbanktabelle erstellen. Weitere Informationen und beispiele dazu folgen...</td>
+        </tr>
+        <tr>
+            <td>INSERT INTO tablename(varname, varname, varname) VALUES (inhalt, inhalt, inhalt)</td>
+            <td>Datensätze in Tabelle Hinzufügen</td>
+        </tr>
+        <tr>
+            <td>REMOVE * FROM tablename WHERE varname, id ...</td>
+            <td>Eintrag Entfernen</td>
+        </tr>
+        
+    </table>
+</article>
+{% endblock %}

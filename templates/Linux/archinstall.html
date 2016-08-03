@@ -1,0 +1,49 @@
+﻿{% extends "index.html" %}
+
+{% block nav %}
+{% include "asides/linuxside.html" %}
+{% endblock %}
+
+{% block content %}
+<h1> Arch Linux Installieren</h1>
+<article>
+    <p>
+        Es gibt viele Distrubutionen, doch liegt Arch in persönlicher Hand. Es ist eventuell zwar etwas aufwändiger es zu installieren, da man kein typisches setup hat, sondern alles manuell machen muss. Dabei lernt man jedoch schon vieles und kann alles bestimmen. Welche Desktop oberfläche? KDE? Gnome? Beides? oder garkeine? 
+        Schaut es euch einfach an, wenn ihr die Seite noch nicht von einem Arch rechner aufgerufen habt :D Hier will ich euch nur mal kurz Zeigen, wie man die Hauptinstallation abschließt. Natürlich mit 512 bit Luks verschlüsselung, damit auch niemand an eure Daten kommt, außer ihr selbst ;)
+    </p>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Kurzbeschreibung</th>
+        </tr>
+        <tr>
+            <td>loadkeys de</td>
+            <td>Tastatur auf Deutsch stellen</td>
+        </tr>
+        <tr>
+            <td>modprobe dm-crypt</td>
+            <td>Kernelmodule laden</td>
+        </tr>
+        <tr>
+            <td>cfdisk</td>
+            <td>Partitionierung - 1) 0,1GB bootflag; 2) Rest des Speichers</td>
+        </tr>
+        <tr>
+            <td>shred -v /dev/sda2</td>
+            <td>Festplatte zufällig Überschreiben | 3x</td>
+        </tr>
+        <tr>
+            <td>cryptsetup -c aes-xts-plain -y -s 512 LuksFormat /dev/sda2</td>
+            <td>verschlüsselung erstellen</td>
+        </tr>
+        <tr>
+            <td>cryptsetup LuksOpen /dev/sda2 lvm</td>
+            <td>Verschlüsselte Partition Öffnen</td>
+        </tr>
+        <tr>
+            <td>pvcreate main /dev/mapper/lvm</td>
+            <td>Kein plan </td>
+        </tr>
+    </table>
+</article>
+{% endblock %}

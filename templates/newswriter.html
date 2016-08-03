@@ -18,6 +18,16 @@
 {% block content %}
 <h2> Add News </h2>
 <article>
+    <form>
+        <label>Dateityp: </label>
+        <select name="selectUploadType" size="3" multiple>
+            <option>Projekt</option>
+            <option>Passfile</option>
+            <option>Aufgabe</option>
+        </select>
+    </form>
+
+
     <form action="" method="post">
         <table border="0">
             <tr>
@@ -30,7 +40,7 @@
             </tr>
             <tr>
                 <td>News:</td>
-                <td><textarea name="news" cols="80" rows="20"></textarea></td>
+                <td><textarea name="news" cols="120" rows="200"></textarea></td>
             </tr>
             <tr>
                 <td></td>

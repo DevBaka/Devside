@@ -1,0 +1,30 @@
+﻿{% extends "index.html" %}
+
+{% block nav %}
+{% include "asides/devside.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>
+    Der Interpreter
+</h2>
+<article>
+    <p>Der Python-Interpreter ist in fast jeder Linux Distibution zu finden und befindet sich unter /usr/bin. Diesen kann man in einer Shell mit "Python" direkt Starten. Dieser gibt anfangs die Versions nummer und weitere Informationen aus.
+    Dieser ist nützlich um kleine Codeteile zu Testen und bietet sich zum lernen an, wenn man mit etwas Herumprobieren will.</p>
+</article>
+<h2>
+    Programm Ausführen
+</h2>
+<article>
+    <p>Ein Python Programm kann ganz einfach ausgeführt werden, indem man in einer Shell Folgenes eintippt: "Python ProgrammName.py".
+    Ich will nicht hier nicht genau erwähnen, was ein Compiler und ein Interpreter ist, doch sollte einem bewusst sein, dass Pythin einen Interpreter nutzt und die Programme somit nicht direkt ausführbare Datein sind.
+    Während der Laufzeit wird der Quellcode erst analysiert und der Bytecode ausgeführt. Deswegen Muss man auch daran denken, Funktionen nicht vor der Funktion aufrufen zu wollen.</p>
+</article>
+<h2>
+    Die Syntax
+</h2>
+<article>
+    <p>Die Syntax in Python ist, wenn man vorher Sprachen wie Java, C#, C/C++ oder sonstiges konnte eventuell etwas gewöhnungsbedürftig. Hinter einer funktion muss kein ; mehr hin. Funktionen sind nicht mit einem {} gekennzeichnet oder einem then, do und end oder ähnliches...
+    Wie funktioniert es nun also? Im Grunde ganz simple. </p>
+</article>
+{% endblock %}

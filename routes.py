@@ -7,10 +7,28 @@ import uuid
 import passlib
 import sqlite3
 import bcrypt
+import os
 from passlib.hash import pbkdf2_sha256
+from werkzeug.utils import secure_filename
+from flask import send_from_directory
+from werkzeug import SharedDataMiddleware
 #import flask_login
 # session['logged_in'] = None
+
+
+UPLOAD_FOLDER = 'C:\Users\DevBaka\Source\Repos\Devside\Uploads'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+def createAdminNavbar(site):    
+    foo = {}
+    return foo[site]
+
 def createNavbar(site):
+    dfdfdf = session.get('username')
+    if dfdfdf == "baka":
+        admintools = ["news writer", "projekt uploader"]
+    else:
+        admintools = ["", ""]
     foo = {
         "index": ["about me", "kontakt", "news"],
         "about me": ["about me", "kontakt", "news"],
@@ -19,11 +37,28 @@ def createNavbar(site):
         "Python": ["Python"],
         "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
         "login": ["baka"],
-        "profile": ["about me", "kontakt", "profile", "newswriter"],
-        "newswriter": ["news","about me", "kontakt", "profile", "newswriter"],
-        "news": ["about me", "kontakt", "news", "profile", "newswriter"]
+        "profile": ["about me", "kontakt", "profile", admintools ],
+        "newswriter": ["news","about me", "kontakt", "profile", admintools ],
+        "news": ["about me", "kontakt", "news"],
+        "Datenbanken": ["SQL Befehle"],
+        "SQL Befehle": ["SQL Befehle"],
+        "Linux": ["Install Arch Linux"],
+        "Projekte": ["Devside", "WeAreOne","Raspi Log Monitoring"],
+        "Install Arch Linux": ["Install Arch Linux"]
     }
     return foo[site]
+
+def startside():
+    return render_template('asides/startside.html')
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 def username():
     if 'sid' in session:
@@ -62,6 +97,32 @@ def Python():
 @templated("kali/kali_linux.html")
 def kalistart():
     return {"seite": "kali_linux", "navbar": createNavbar}
+
+@app.route("/Datenbanken")
+@templated("datenbanken/Datenbanken.html")
+def Datenbanken():
+    return {"seite": "Datenbanken", "navbar": createNavbar}
+
+@app.route("/SQL Befehle")
+@templated("datenbanken/sql_commands.html")
+def sql_commands():
+    return {"seite": "SQL Befehle", "navbar": createNavbar}
+
+@app.route("/Linux")
+@templated("Linux/Linux.html")
+def Linux():
+    return {"seite": "Linux", "navbar": createNavbar}
+
+@app.route("/Install Arch Linux")
+@templated("Linux/archinstall.html")
+def Archinstall():
+    return {"seite": "Install Arch Linux", "navbar": createNavbar}
+
+
+@app.route("/Projekte")
+@templated("Projekte/Projekte.html")
+def Projekte():
+    return {"seite": "Projekte", "navbar": createNavbar}
 
 @app.route("/login", methods=['GET', 'POST'])
 @templated("login.html")
@@ -142,12 +203,34 @@ def register():
         return redirect(url_for('profile'))
     return render_template('register.html', error=error)
 
-@app.route("/profile")
+@app.route("/profile", methods=['GET','POST'])
 @templated("profile.html")
 def profile():
-    baka = escape(session['username'])
+    fileurl = "none"
+    filename = "none"
+    try: 
+        baka = session['username']
+    except:
+        baka = "Nicht eingeloggt"
+    print baka
     print("trol jf USERNAME:    !!!! ::::: " + baka )
-    return {"seite": "profile", "navbar": createNavbar}
+    if baka == 'baka':
+        if request.method == 'POST':
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+            if file.filename == '':
+                baka = "No selected file"
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                fileurl = url_for('uploaded_file', filename=filename)
+        #return {"seite": "upload", "navbar": createNavbar, "baka":baka, "fileurl":fileurl}
+        return {"seite": "profile", "navbar": createNavbar, "baka": baka, "fileurl": fileurl, "filename": filename}
+    else:
+        return {"seite": "profile", "navbar": createNavbar, "baka": baka}
 
 @app.route("/newswriter", methods=['GET','POST'])
 @templated("newswriter.html")
@@ -238,6 +321,24 @@ if request.method == "POST":
             return render_template('login.html', error=error)
     return render_template('login.html', error=error) """
 
+
+
+@app.route("/upload", methods=['GET','POST'])
+@templated("upload.html")
+def upload():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            baka = "No selected file"
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fileurl = url_for('uploaded_file', filename=filename)
+    return {"seite": "upload", "navbar": createNavbar, "baka":baka, "fileurl":fileurl}
 
 @app.route("/logout")
 @templated("logout.html")

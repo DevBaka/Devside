@@ -1,17 +1,7 @@
 ﻿{% extends "index.html" %}
 
 {% block nav %}
-<ul>
-    <li><a href="/">Start</a> </li>
-    <ul>
-        {% for i in navbar(seite) %}
-        <li><a href="{{ i }}"> {{ i }}</a> </li>
-        {% endfor %}
-    </ul>
-    <li><a href="/Programmierung">Programmierung</a> </li>
-    <li><a href="/kali_linux">Kali Linux</a></li>
-    
-</ul>
+{% include "asides/startside.html" %}
 {% endblock %}
 
 
@@ -21,7 +11,7 @@
 
     {% if baka %}
     {% for value in baka.values() %}
-    <p> {{ value[2] }}</p>
+    <h2> {{ value[2] }}</h2>
     <article>
             <p> {{ value[3] }}</p>
             <p id="autor"> Geschrieben von {{ value[0]}} am {{ value[1]}}</p>

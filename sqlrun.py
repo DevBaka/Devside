@@ -55,3 +55,12 @@ while eingabe != "exit":
         db.commit()
         print baka
         db.close()
+    if eingabe == "4":
+        db = sqlite3.connect("devside.db")
+        c = db.cursor()
+        c.execute("CREATE TABLE projektlinks(Projekt_ID INTEGER PRIMARY KEY AUTOINCREMENT, projektlink TEXT);")
+        db.close()
+
+    if eingabe == "5":
+        db = sqlite3.connect("devside.db")
+        c = db.cursor()

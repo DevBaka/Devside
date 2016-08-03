@@ -1,144 +1,312 @@
-#wrapper
-{
-	/* wrapper halt, äußerster kasten überhaupt indem alles liegt. */
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #999;
-	width: 95%;
-	height: auto; /* 900 */
+@media screen{
+	#wrapper{
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #999;
+		width: 980px;
+	    height: auto; /* 900 */    
+	}
+
+
+	body{
+		 background-color: #666;
+		margin-top: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+		/*background: #f6ff53; /* old browser*/
+	    /*background: -moz-linear-gradient(top, #f6ff53 55%); /* FireFox 3.7 – 15 */
+	    /*background: -webkit-linear-gradient(top, #f6ff53 0%,#b6e842 55%); /*Chrome 10 – 25,  Safari5.1 – 6 */
+	    /*background: linear-gradient(to bottom, #f6ff53 0%, #b6e842 55% );
+	    /*filter: progid:DXImageTransform.Microsoft.grandient( startColorstr='#f6ff53', endColorstr='#b6e842',GrandientType=0); /* Internet Eplorer 6-9 */
+	}
+
+
+	header{
+		width: 100%;
+		height: 150px;
+		background-color: #0F0;
+		
+	} 
+
+	nav{
+		width: 100%;
+		height: 50px;
+		background-color: #000;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-family:  Arial, sans-serif;
+		padding-top: 1px;
+		text-align: center;
+		background: -moz-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 83%, rgba(56,56,56,1) 87%, rgba(149,149,149,1) 100%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0d0d', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	}
+
+	nav ul li{
+		list-style-type: none;
+	}
+
+	nav ul li a{
+		height: 30px;
+		width: 250px;
+		display: block;
+		float: left;
+		text-decoration: none;
+		color: #FFF;
+	}
+
+
+
+	aside{
+		width: 240px;
+	    min-height: 830px; /* 590 */
+	    height: ;
+		background-color: #E9E9E9; /* E9E9E9 */
+		margin-left: 10px;
+		/*padding-right: 10px;
+		
+		margin-left: 10px;
+		margin-right: 10px;
+		/*float: left;*/
+		
+	}
+
+	#links, #rechts{
+		height: auto;
+	}
+
+	#TanzAusDenMai{
+		/* width: 	250px;
+		height: 500px;
+		margin-left: 10px;
+		margin-top: 10px;
+		position: absolute; */
+		position: absolute;
+		margin-left: 10px;
+		margin-top: 10px;
+		width: 220px;
+		height: 420px; 
+
+	}
+
+	#EventAnfahrt{
+		position: absolute;
+		width: 220px;
+		height: 370px;
+		margin-left: 10px;
+		margin-top: 440px;
+
+	}
+
+
+	section {
+
+		margin-left: 300px; 
+		margin-right: 10px;
+		/*margin-bottom: 10px;*/
+		width: 680px;
+		min-height: 820px;
+		height: ; /* 590 /760 */ 
+		background-color: #E9E9E9; /* #E9E9E9 */
+		float:right;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+		/*overflow: auto;*/
+
+		
+	}
+
+	section article{
+		margin-top: 10px;
+		/*border: 1px dotted blue;*/
+	}
+
+	section h1{
+		color: #000;
+	}
+
+	#links, #rechts{
+		height: auto;
+	}
+
+
+
+	body > footer{
+		width: 100%;
+		height: 50px;
+		margin-top: 10px;
+		text-align: center;
+		font-size: 12px;
+		color: #0F0;
+	}
+
+
+
+
+
+	.shadowWrapper{
+		/* webkit... moz für mozialla, box für andere browser die webkit nicht unterstützen */
+		-webkit-box-shadow: 0px 10px 20px #0A0;
+		-moz-box-shadow: 0px 10px 20px #0A0;
+		box-shadow: 0px 10px 20px #0A0;
+	}
+
+	.shadowBody{
+		-webkit-box-shadow: 0px 10px 20px #0A0;
+		-moz-box-shadow: 0px 10px 20px #0A0;
+		box-shadow: 0px 1px 10px #E9E9E9;
+	}
+
+	/* article footer{
+		margin-left: 100px;
+		text-align: center;
+		width: 400px;
+		height: 20px;
+		font-size: 12px;
+		font-family: Calibri, sans-serif;
+		color: black;
+		background-color: #F8F2EF;
+		border: 1px solid #F7BE81;
+		padding:  5px;
+		margin-bottom: 40px;
+	} */
+	footer{
+		width: 100%;
+		height: 50px;
+		/*background-color: #000;*/
+		margin-top: 10px;
+		font-weight: bold;
+		padding-top: 1px;
+		text-align: center;
+		background: -moz-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 83%, rgba(56,56,56,1) 87%, rgba(149,149,149,1) 100%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0d0d', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	}
+
+	footer ul li{
+		list-style-type: none;
+	}
+
+	footer ul li a{
+		height: 30px;
+		width: 300px;
+		display: block;
+		float: left;
+		text-decoration:none;
+		color: #FFF;
+		/*background-color: blue;*/
+	} 
+
+	#Anfahrt{
+		width: 650px;
+		height: 270px;
+		border: 10px dotted blue;
+		
+	}
+
+	footer #copyright{
+		margin-left: 50px;
+	}
+
+	/*.logoslide{
+		display: none;
+	}*/
+
+	#logo{
+		position: absolute;
+	    left: 25%;
+	    width: 500px;
+	    height: 130px;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	   /* border: 1px dotted blue;*/
+
+	}
+
+	.logo{
+		width: 50%;
+		height: 130px;
+		text-align: center;
+	}
+
+	.logoslide{
+		text-align: center;
+		width:100%;
+	}
+
+
+		/* Das Kontaktformular */
+	form {
+	  background-color: #eee;
+	  width: 620px; /* Breite des Formulars 370px*/
+	  height: 420px;
+	  padding: 20px;
+	  border: 1px solid #8c8c8c;
+	}
+	label { /* Beschriftung auf eigener Zeile */
+	  display: block;
+	  cursor: pointer; /* Mauszeiger wird zur Hand */
+	}
+	input#absender, textarea {
+	  width: 620px;
+	  border: 1px solid #8c8c8c;
+	  margin-bottom: 1em;
+	}
+	textarea {
+	  height: 26em;
+	}
+	input:focus,textarea:focus {
+	  background-color: #d9d9d9;
+	}
+
+
 }
 
-body
-{
-	/* Unser kompletter Inhalt. 
-	Margin-top für einen mindest abstand von Oben. Zudem bestimmen wir mehrere schriftarten, falls eine nicht installiert sein sollte. */
-	background-color: #666;
-	margin-top: 20px;
-	font-family: Arial, Helvetica, sans-serif;
-}
- 
-header
-{
-	/* Unser Header, recht klein und simple gehalten. */
-	width: 100%;
-	height: 50px;
-	background-color: #0F0; 
-	text-align: center;
+@media printer{
+/*  ===================================================
+	Stylesheet für die Druckseite von iParty
+	Stand: Druckversion
+	Datei: druckversion.css
+	Media: print
+	Datum: 18.05.2016
+	Autor: iParty
+	=================================================== */
+	body {
+ 	 font-family: Georgia, "Times New Roman", Times, serif;
+	  font-size: 11pt;
+	}
+
+	article h1, h2 { 
+		font-family: Verdana, Arial, Helvetica, sans-serif; 
+		color: red;
+	}
 }
 
-nav
-{
-	/* weite soll sich über dem gesamten body erstrecken */
-	width: 100%;
-	/* Höhe soll 50px sein */
-	height: 50px;
-	/* Alles soll großgeschrieben sein. */
-	margin-bottom: uppercase;
-	/* und alles soll ebenso fett geschrieben werden. */
-	font-weight: bold;
-	/* 1px abstand zum header */
-	padding-top: 1px;
-	/* text soll mittig gestellt werden */
-	text-align: center;
-	/* Background für alle gängigen Browser eingestellt. Nicht selbst geschrieben, sondern von einer externen Seite etwas zusammen geklickt. 
-	Link: http://www.colorzilla.com/gradient-editor/ 
-	Youtube tut: incoming*/
-	background: -moz-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 83%, rgba(56,56,56,1) 87%, rgba(149,149,149,1) 100%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
-	background: -webkit-radial-gradient(center, ellipse cover, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: radial-gradient(ellipse at center, rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 83%,rgba(56,56,56,1) 87%,rgba(149,149,149,1) 100%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0d0d', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+@media screen and ( max-width: 500px ) {
+    /* CSS-Anweisungen für die Ausgabe auf Bildschirmen bis maximal 500 Pixel */
 
 }
 
-nav li
-{
-	margin-left: 20px;
-	display: inline;
-	list-style-type: none;
-	width: 250px;
+@media only screen and ( max-width: 500px ) {
+    /* CSS-Anweisungen für die Ausgabe auf Bildschirmen bis maximal 500 Pixel */
 }
 
-
-
-/*nav ul li a
-{
-	height: 30px;
-	width: 200px;
-	display:inline;
-}*/
-
-section
-{
-	/* float right... damit der content auf der rechten Seite ist. Dadurch wird die aside automatisch eingerückt. */
-	float: right;
-	/* Zudem muss man beachten, die % geringer zu halten, als es mit der aside zusammen ergibt.  */
-	width: 80%;
-	/*height: 600px;*/
-	background-color: green;
+@media only screen and ( min-width: 950px ) {
+    /* breites Browserfenster */
+    
 }
-
-section article
-{
-	border-color: green;
-	border-width: 5px;
-	border-style: solid;
+@media only screen and ( max-width: 440px ) {
+    /* mobile Geräte */
+	
 }
+@media only screen and ( min-width: 440px ) and ( max-width: 950px ) {
+    /* Tablets und mittlere Bildschirme */
 
-
-#left, #right
-{
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top:20px;
-	min-height: 600px;
-    height: auto;
-
-}
-aside
-{
-    background-color: #AFAFAF;
-	width: 15%;
-	border: 2px blue dotted;
-    float: left;
-}
-
-aside ul
-{
-    margin-top: 10%;
-	list-style: none;
-
-}
-
-aside ul li
-{
-    margin-top: 1%;
-}
-
-
-
-footer
-{
-	width: 100%;
-	height: 50px;
-	margin-top: 10px;
-	font-weight: bold;
-	padding-top: 1px;
-	background: -moz-linear-gradient(top, rgba(15,229,11,0.8) 0%, rgba(20,210,53,0.8) 14%, rgba(41,137,216,0.95) 69%, rgba(26,190,97,1) 87%, rgba(15,229,11,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(15,229,11,0.8) 0%,rgba(20,210,53,0.8) 14%,rgba(41,137,216,0.95) 69%,rgba(26,190,97,1) 87%,rgba(15,229,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0fe50b', endColorstr='#0fe50b',GradientType=0 ); /* IE6-9 */
-}
-
-
-footer li
-{
-	list-style-type:none;
-	display: inline;
-}
-
-footer li a
-{
-	width: 200px;
-	margin-left: 20px;
+    
 }
 

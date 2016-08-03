@@ -1,0 +1,13 @@
+kali
+arch
+clonezilla
+ultimate boot cd
+mint
+tails
+backbox
+windoof 7
+ubuntu
+
+raspi:
+sudo apt-get update -y && apt-get upgrade -y
+apt-get install postgresql && apt-get install pgadmin3

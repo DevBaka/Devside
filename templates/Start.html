@@ -1,17 +1,6 @@
 {% extends "index.html" %}
 {% block nav %}
-    <ul>
-        <li><a href="/Start">Start</a> </li>
-
-        <ul>
-{% for i in navbar(seite) %}
-            <li><a href="{{ i }} "> {{ i }}</a> </li>
-{% endfor %}
-        </ul>
-        <li><a href="/Programmierung">Programmierung</a> </li>
-        <li><a href="/kali_linux">Kali Linux</a></li>
-    </ul>
-
+{% include "asides/startside.html" %}
     <!-- <ul>
         <li class="lrboxborder" id="startborder" ><a href="/">Start</a></li>
         <li class="lrboxborder"><a href="/aboutme">Über mich</a></li>
@@ -20,9 +9,13 @@
     </ul> -->
 {% endblock %}
 {% block content %}
-<h1> Wozu eine weitere Seite für Grundwissen? </h1>
+<h1> DevBaka, was findet man hier? </h1>
 <article>
-    <p> Auf dieser Seite werde ich mit der Zeit mein Wissen vermitteln. Tipps und Tricks nennen, werde euch kleinen einstieg in Verschiedene Themen bieten, Projekte hochladen, Dokumentationen schreiben, Video Tutorials hochladen, Mixes hochladen und vieles mehr. Vorerst baue ich die Seite alleine auf. Auch für mich ist diese Seite ein Projekt zur Übung und um mein Wissen zu vertiefen. Möge es bewusste Kompetenz zur unbewussten Kompetenz übersteigen. </p>
+    <p>Ich bin zwar echt kein Fan von html, css oder allgemein webdesing. Doch wollte ich dennoch eine Seite veröffentlichen, auf welcher ich mein Wissen teilen kann. Zudem Spielen Webapplications heutzutage eine wichtige rolle.
+    Außerdem kommt man sowieso nicht drum rum es zu Lernen. Es haben mich in der Vergangenheit einige gefragt ob ich Ihnen etwas zeigen könnte, helfen kann und weiteres. Einige die noch nichts in dem Bereich gemacht haben, konnte ich Inspirieren und sind heute noch dabei.
+    Ich selbst jedoch bin noch der meinung, nicht viel ahnung und Erfahrung zu haben. Andere würden mich wahrscheinlich auslachen, während Sie eine erfolgreiche SQL Injection machen auf dieser Seite, doch dazu ist Sie aktuell da.
+    Ein gewisses Verständnis habe ich dennoch. Und dass was ich habe, teile ich Gerne, also wird diese Seite wahrscheinlich zum endlos Projekt, an welchem ich in der Zukunft stück für stück Arbeiten werde. Eventuell finden sich ja die einen oder andere, die sich dabei anschließen.</p>
+    <p>Auch für mich zieht diese Seite Ihren nutzen, indem ich die Seite als spickzettel nutze. Oder besser gesagt als Nachschlagwerk. Da ich nicht alles komplett detailiert beschreiben werde, kommt auch Ihr nicht drum rum euch weiter zu Informieren.</p>
 </article>
 <h1> Zukünftige Pläne: </h1>
 <article>

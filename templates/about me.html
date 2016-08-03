@@ -1,33 +1,18 @@
 
 {% extends "index.html" %}
+
 {% block nav %}
-<ul>
-    <li><a href="/">Home</a> </li>
-    <ul>
-{% for i in navbar(seite) %}
-<li><a href="{{ i }} "> {{ i }}</a></li>
-{% endfor %}
-</ul>
-    <li><a href="dev/Programmierung.html">Programmierung</a> </li>
-    <li><a href="/kali_linux">Kali Linux</a></li>
-
-</ul>
-
-
-
+{% include "asides/startside.html" %}
 {% endblock %}
+
 {% block content %}
-<h2> Who i am</h2>
+<h1> Who i am</h1>
 <article>
-    <p> Ich selbst bin uninteressant und kann Ignoriert werden.
+    <p> Ich selbst bin uninteressant und kann Ignoriert werden. Also geht mir bei Fragen nicht auf die Nerven, sondern fangt an zu Googlen. 
         Wer dennoch meint, solch einen unnötigen Text, lesen zu müssen... gerne... </p>
     <p> Ich bin legentlich ein 18Jähriger Schüler, welcher den IT-Assistenten macht und darauf eine Ausbildung als Anwendungsentwickler machen will.
         Wenn ich damit durch bin, will ich in Zukunft zudem Angewandte Informatik Studieren. Und wozu der ganze scheiß? Nein, es geht mir nicht darum viel zu verdienen.
         Beim Bund hätte ich auch guten verdienst bekommen, wo ich immer noch gern hin würde, wenn ich es zeitlich schaffen würde. Ich lerne den kram, weils mir bock macht.
         Es ist nicht nur, dass entdecken, des systemes. Es macht spaß seine Projekte zu vollenden und es ist ein unbeschreibliches gefühl, wenn man ein Problem nach stunden oder Tagen umgangen ist.</p>
 </article>
-{% for i in navbar(seite) %}
-    <p> Link1: {{ i }} url:</p>
-{% endfor %}
-{{ navbar(seite) }}
 {% endblock %}

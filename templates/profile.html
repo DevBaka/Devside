@@ -1,25 +1,54 @@
 ﻿{% extends "index.html" %}
 
 {% block nav %}
-<ul>
-    <li><a href="/">Start</a> </li>
-    <ul>
-        {% for i in navbar(seite) %}
-        <li><a href="{{ i }}"> {{ i }}</a> </li>
-        {% endfor %}
-    </ul>
-    <li><a href="/Programmierung">Programmierung</a> </li>
-    <li><a href="/kali_linux">Kali Linux</a></li>
-    
-</ul>
+{% include "asides/startside.html" %}
 {% endblock %}
 
 
 {% block content %}
-<h2> Welcome back, {{ session['username'] }} !</h2>
+{% if baka != "Nicht eingeloggt" %}
+<h1> Welcome back, {{ session['username'] }} !</h1>
+{% endif %}
+
+{% if baka == "Nicht eingeloggt" %}
+<p> Bitte Loggen Sie sich Zuerst oder wieder ein, bevor Sie diese Seite aufrufen. </p>
+<p></p><a href="/login">Hier geht´s zurück zum Login</a><p></p>
+{% endif %}
+
+{% if session['username'] == 'baka' %}
+<h2> File Uploader</h2>
 <article>
-    <p>
-        hier kommt irgendwann ein benutzer profiel hin
-    </p>
+    <h1>Upload new File</h1>
+    <form>
+        <label>Dateityp: </label>
+        <select name="selectUploadType" size="3"  multiple>
+            <option>Projekt</option>
+            <option>Passfile</option>
+            <option>Aufgabe</option>
+        </select>
+    </form>
+    <script type="text/javascript">
+        var lolz = "baka"
+        var selectedItem = document.getElementById("selectUploadType");
+    </script>
+    <!-- <button onclick="alert({{ selectedItem }})" /> -->
+    <button name="lolbak">baka</button>
+    {% if lolbak %}
+    alert("lol blizzard")
+    {% endif %}
+   <!-- <p>  lolz  :  {{ selectedItem }}</p>-->
+    
+    
+    <form action="" method=post enctype=multipart/form-data>
+        <p>
+            <input type=file name=file>
+            <input type=submit value=Upload>
+        </p>
+    </form>
+    
+    {% if filename != "none" %}
+    <a href="{{ fileurl }}">{{ filename }}</a></p>
+    {% endif %}
 </article>
+{% endif %}
 {% endblock %}

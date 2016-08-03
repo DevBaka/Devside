@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="devside.db" />
+    <Content Include="js\profiel.js" />
     <Content Include="static\2.css" />
     <Content Include="static\background.gif" />
     <Content Include="static\background2.gif" />
@@ -44,20 +45,39 @@
     <Content Include="static\styleold.css" />
     <Content Include="templates\about me.html" />
     <Content Include="templates\aside.html" />
+    <Content Include="templates\asides\databaseside.html" />
+    <Content Include="templates\asides\devside.html" />
+    <Content Include="templates\asides\kaliside.html" />
+    <Content Include="templates\asides\linuxside.html" />
+    <Content Include="templates\asides\projektsides.html" />
+    <Content Include="templates\asides\startside.html" />
+    <Content Include="templates\datenbanken\Datenbanken.html" />
+    <Content Include="templates\datenbanken\sql_commands.html" />
     <Content Include="templates\dev\Programmierung.html" />
+    <Content Include="templates\dev\python\Grundlagen.html" />
     <Content Include="templates\dev\python\Python.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\kali\kali_linux.html" />
+    <Content Include="templates\Linux\archinstall.html" />
+    <Content Include="templates\Linux\Linux.html" />
     <Content Include="templates\login.html" />
     <Content Include="templates\news.html" />
     <Content Include="templates\newswriter.html" />
     <Content Include="templates\profile.html" />
+    <Content Include="templates\Projekte\Projekte.html" />
     <Content Include="templates\register.html" />
     <Content Include="templates\Start.html" />
     <Content Include="templates\start\kontakt.html" />
+    <Content Include="templates\upload.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="misc" />
+    <Folder Include="js\" />
+    <Folder Include="templates\asides\" />
+    <Folder Include="templates\datenbanken\" />
+    <Folder Include="templates\Linux\" />
+    <Folder Include="templates\Projekte\" />
+    <Folder Include="Uploads\" />
     <Folder Include="static" />
     <Folder Include="templates" />
     <Folder Include="templates\dev" />
