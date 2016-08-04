@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block nav %}
+
+{% endblock %}
+
+
+{% block content %}
+  <h2> Festplatte auf Fehlerhaften Sektoren oder Blöcken </h2>
+  <article>
+    <h3> Festplatte Identifizieren </h3>
+    <p> Als erstes sollten wir Wissen, welche Festplatte wir überhaupt überprüfen wollen. Somit können wir mit dem command "fdisk -l" alle Partitionen und Festplatten anzeigen. <p>
+    <h3> Nach Fehlerhaften Sektoren und Blöcken Suchen </h3>
+    <p> Nun Wissen wir welche Festplatte wir durchsuchen wollen. Doch wie machen wir es nun? Dazu geben wir einfach "badblocks -v /dev/hdd > /ausgabeverzeichnis.txt" ein.
+    Als beispiel bei mit der Festplatte /dev/sdc: "devblocks -v /dev/sdc > /root/Desktop/badblocks.txt". Der Ausgabeordner ist in dem fall mein Desktop, doch sollte wenn die Festplatte genutzt wird, welche man aktuell nutzt besser /tmp nutzen. </p>
+    <h3> Dem System sagen, dass es die Beschädikten stellen ignorieren soll und nicht mehr nutzen soll </h3>
+    <p> Wenn Fehlerhafte Blöcke oder Sektoren in der Datei aufgelistet worden sind, kann man ganz einfach mit "e2fsck -l /root/Desktop/badblocks.txt /dev/sdc" sagen, dass diese stellen übersprungen werden sollen. Stellen Sie vorerst sicher, dass Ihr Datenträger in dem augenblick nicht bemounted ist.
+  </article>
+{% endblock %}
