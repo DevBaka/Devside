@@ -18,18 +18,8 @@
 {% block content %}
 <h2> Add News </h2>
 <article>
-    <form>
-        <label>Dateityp: </label>
-        <select name="selectUploadType" size="3" multiple>
-            <option>Projekt</option>
-            <option>Passfile</option>
-            <option>Aufgabe</option>
-        </select>
-    </form>
-
-
     <form action="" method="post">
-        <table border="0">
+        <table border="0", id="news">
             <tr>
                 <td>Datum:</td>
                 <td><input type="text" name="datum" placeholder="Datum" required</td>
@@ -40,7 +30,7 @@
             </tr>
             <tr>
                 <td>News:</td>
-                <td><textarea name="news" cols="120" rows="200"></textarea></td>
+                <td><textarea name="news" cols="240" rows="20"></textarea></td>
             </tr>
             <tr>
                 <td></td>
@@ -50,6 +40,24 @@
     </form>
     {% if error %}
     <p class="error"><strong>Error: </strong> {{ error }}</p>
+    {% endif %}
+</article>
+<h2>Delete News</h2>
+<article>
+    {% if baka %}
+    <form action="" method="post">
+        <label>News by Title:</label>
+        <select name="newslist" size="3" onchange="alert(this.value)">
+            {% for value in baka.values() %}
+            <option>{{ value[2] }}</option>
+
+            {% endfor %}
+        </select>
+        <input type="submit" value="lolplay" onclick=lol() />
+        <button type="button" id="lolbaka" onclick="lol()" onchange="lol()" > baka</button>
+
+    </form>
+    
     {% endif %}
 </article>
 {% endblock %}

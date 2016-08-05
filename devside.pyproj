@@ -36,6 +36,7 @@
   <ItemGroup>
     <Content Include="devside.db" />
     <Content Include="js\profiel.js" />
+    <Content Include="js\script.js" />
     <Content Include="static\2.css" />
     <Content Include="static\background.gif" />
     <Content Include="static\background2.gif" />

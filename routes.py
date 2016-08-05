@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, url_for, redirect, render_template, request, session, flash, escape
+from flask import Flask, url_for, redirect, render_template, request, session, flash, escape, jsonify
 from init import app
 from misc.templating import templated
 import sql
@@ -37,8 +37,8 @@ def createNavbar(site):
         "Python": ["Python"],
         "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
         "login": ["baka"],
-        "profile": ["about me", "kontakt", "profile", admintools ],
-        "newswriter": ["news","about me", "kontakt", "profile", admintools ],
+        "profile": ["about me", "kontakt", "profile", "newswriter", "projekt uploader" ],
+        "newswriter": ["news","about me", "kontakt", "profile", "newswriter", "projekt uploader" ],
         "news": ["about me", "kontakt", "news"],
         "Datenbanken": ["SQL Befehle"],
         "SQL Befehle": ["SQL Befehle"],
@@ -242,9 +242,41 @@ def write_news():
         datum = request.form['datum']
         entrie = request.form['news']
         sql.write_globalNews(autor, datum, titel, entrie)
+        
+
+    print("hello world")
+    error = None
+    i = 0
+    baka = {}
+    istrue = ""
+    autor = ""
+    titel = ""
+    while istrue != None:
+        i = i + 1
+        #print baka
+        istrue = sql.red_news(i)
+        tulp = sql.red_news(i)
+        print "THE UTLLD D TULPPPEEEEEE!!!: " + str(tulp)
+        if tulp != None:
+            akdir = {i: [ tulp[1], tulp[2], tulp[3], tulp[4]]}
+            baka.update(akdir)
+
+    """if request.method == 'POST':
+        print "baka"
+        if request.form['delnews'] == "Delete News":
+            selecteditem = request.form.get('newslist')
+            print("This News should deleted: " + selecteditem)
+
+
+
+    if request.form['delnews'] == "Delete News":
+                print("2")
+                selecteditem = request.form.get('newslist')
+                print("This News should deleted: " + selecteditem)
+"""
 
             
-    return {"seite": "newswriter", "navbar": createNavbar, "error":error}
+    return {"seite": "newswriter", "navbar": createNavbar, "error":error, "baka":baka}
 @app.route("/news")
 @templated("news.html")
 def news():

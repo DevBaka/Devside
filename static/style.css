@@ -201,6 +201,10 @@
         height: 320px;
         
     }
+
+    #news{
+        width: 1100px;
+    }
 }
 @media screen and (max-width: 1000px){
     #wrapper {
@@ -232,6 +236,9 @@
 
     h1,h2{
         color: red;
+    }
+    #news{
+        width: 400px;
     }
 }
 
@@ -303,5 +310,9 @@
         width: 200px;
 
         
+    }
+
+    #news{
+        width: 680px;
     }
 }
