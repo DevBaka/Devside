@@ -37,8 +37,8 @@ def createNavbar(site):
         "Python": ["Python"],
         "kali_linux": ["Installation", "Erste Schritte", "Metasploit", "Port Scan"],
         "login": ["baka"],
-        "profile": ["about me", "kontakt", "profile", "newswriter", "projekt uploader" ],
-        "newswriter": ["news","about me", "kontakt", "profile", "newswriter", "projekt uploader" ],
+        "profile": ["about me", "kontakt", "profile", "newswriter", "newsremover", "projekt uploader" ],
+        "newswriter": ["news","about me", "kontakt", "profile", "newswriter", "newsremover", "projekt uploader" ],
         "news": ["about me", "kontakt", "news"],
         "Datenbanken": ["SQL Befehle"],
         "SQL Befehle": ["SQL Befehle"],
@@ -232,17 +232,11 @@ def profile():
     else:
         return {"seite": "profile", "navbar": createNavbar, "baka": baka}
 
-@app.route("/newswriter", methods=['GET','POST'])
-@templated("newswriter.html")
-def write_news():
-    error = None
-    if request.method == 'POST':
-        autor = session['username']
-        titel = request.form['titel']
-        datum = request.form['datum']
-        entrie = request.form['news']
-        sql.write_globalNews(autor, datum, titel, entrie)
-        
+@app.route("/newsremover",  methods=['GET','POST'])
+@templated("tools/newsremover.html")
+def newsremover():
+
+
 
     print("hello world")
     error = None
@@ -253,13 +247,35 @@ def write_news():
     titel = ""
     while istrue != None:
         i = i + 1
-        #print baka
+        # print baka
         istrue = sql.red_news(i)
         tulp = sql.red_news(i)
-        print "THE UTLLD D TULPPPEEEEEE!!!: " + str(tulp)
+        #print "THE UTLLD D TULPPPEEEEEE!!!: " + str(tulp)
         if tulp != None:
-            akdir = {i: [ tulp[1], tulp[2], tulp[3], tulp[4]]}
+            akdir = {i: [tulp[1], tulp[2], tulp[3], tulp[4]]}
             baka.update(akdir)
+
+    if request.method == 'POST':
+        print("lol blizzard xD")
+        option = request.form['newslist']
+        sql.delete_news(option)
+        print("You choose this trash: " + option)
+
+    return {"seite": "newswriter", "navbar": createNavbar, "error":error, "baka":baka}
+
+@app.route("/newswriter", methods=['GET','POST'])
+@templated("tools/newswriter.html")
+def write_news():
+    error = None
+    if request.method == 'POST':
+        autor = session['username']
+        titel = request.form['titel']
+        datum = request.form['datum']
+        entrie = request.form['news']
+        sql.write_globalNews(autor, datum, titel, entrie)
+        
+
+
 
     """if request.method == 'POST':
         print "baka"
@@ -276,7 +292,7 @@ def write_news():
 """
 
             
-    return {"seite": "newswriter", "navbar": createNavbar, "error":error, "baka":baka}
+    return {"seite": "newswriter", "navbar": createNavbar, "error":error}
 @app.route("/news")
 @templated("news.html")
 def news():

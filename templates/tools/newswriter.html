@@ -42,22 +42,4 @@
     <p class="error"><strong>Error: </strong> {{ error }}</p>
     {% endif %}
 </article>
-<h2>Delete News</h2>
-<article>
-    {% if baka %}
-    <form action="" method="post">
-        <label>News by Title:</label>
-        <select name="newslist" size="3" onchange="alert(this.value)">
-            {% for value in baka.values() %}
-            <option>{{ value[2] }}</option>
-
-            {% endfor %}
-        </select>
-        <input type="submit" value="lolplay" onclick=lol() />
-        <button type="button" id="lolbaka" onclick="lol()" onchange="lol()" > baka</button>
-
-    </form>
-    
-    {% endif %}
-</article>
 {% endblock %}

@@ -27,7 +27,7 @@ from routes import *
 
 
 if __name__ == '__main__':
-    HOST = os.environ.get("SERVER_HOST", "192.168.2.100")
+    HOST = os.environ.get("SERVER_HOST", "192.168.44.253")
     try:
         PORT = int(os.environ.get("SERVER_PORT", "4444"))
     except ValueError:

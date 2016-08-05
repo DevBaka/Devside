@@ -104,6 +104,12 @@ def write_globalNews(autor, datum, titel, news):
     c.execute("INSERT INTO entries(autor, datum, titel, news) VALUES('" + autor + "','" + datum + "','"+titel+"','"+news+"')")
     db.commit()
     db.close()
+def delete_news(titel):
+    db = sqlite3.connect("devside.db")
+    c = db.cursor()
+    c.execute("DELETE FROM entries WHERE titel='" + titel + "'")
+    db.commit()
+    db.close()
 
 def red_news(entrie_ID):
     db = sqlite3.connect("devside.db")

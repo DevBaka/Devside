@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block nav %}
+<ul>
+    <li><a href="/">Start</a> </li>
+    <ul>
+        {% for i in navbar(seite) %}
+        <li><a href="{{ i }}"> {{ i }}</a> </li>
+        {% endfor %}
+    </ul>
+    <li><a href="/Programmierung">Programmierung</a> </li>
+    <li><a href="/kali_linux">Kali Linux</a></li>
+   
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h2>Delete News</h2>
+<article>
+
+    {% if baka %}
+    <form action="" method="post">
+        <label>News by Title:</label>
+        <select name="newslist" size="3" onchange="alert(this.value)">
+            {% for value in baka.values() %}
+            <option value="{{ value[2] }}" SELECTED> {{ value[2] }}</option>
+
+            {% endfor %}
+        </select>
+        <input type="submit" value="Entfernen" name="newsremove" onclick=lol() />
+
+    </form>
+</article>
+    {% endif %}
+{% endblock %}
